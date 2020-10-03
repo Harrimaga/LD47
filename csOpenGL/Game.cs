@@ -1,4 +1,6 @@
-﻿using OpenTK.Input;
+﻿using LD47.Ships;
+using LD47.Weapons;
+using OpenTK.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +13,14 @@ namespace LD47
     {
 
         public Window window;
-        private Hotkey left = new Hotkey(true).AddKey(Key.A).AddKey(Key.Left);
-        private Hotkey right = new Hotkey(true).AddKey(Key.D).AddKey(Key.Right);
-        private Hotkey up = new Hotkey(true).AddKey(Key.W).AddKey(Key.Up);
-        private Hotkey down = new Hotkey(true).AddKey(Key.S).AddKey(Key.Down);
-
+        
         private Level l = new Level(Textures.testLevel);
         public List<DrawnButton> buttons = new List<DrawnButton>();
+
+
+        public Player player = new Player(Enums.Nation.Brittain);
+        
+
 
         public Game(Window window)
         {
@@ -27,17 +30,18 @@ namespace LD47
 
         public void OnLoad()
         {
-
+            Globals.projectiles = new List<Projectile>();
         }
 
         public void Update(double delta)
         {
             Globals.delta = delta;
             //Updating logic
-            if (left.IsDown()) Window.camX -= (float)(10 * delta);
-            if (right.IsDown()) Window.camX += (float)(10 * delta);
-            if (up.IsDown()) Window.camY -= (float)(10 * delta);
-            if (down.IsDown()) Window.camY += (float)(10 * delta);
+            player.Update(delta);
+            foreach (Projectile projectile in Globals.projectiles)
+            {
+                projectile.Update(delta);
+            }
 
             l.Update();
         }
@@ -45,6 +49,14 @@ namespace LD47
         public void Draw()
         {
             //Do all you draw calls here
+
+            player.Draw();
+            foreach (Projectile projectile in Globals.projectiles)
+            {
+                projectile.Draw();
+            }
+
+
             l.draw();
             foreach (DrawnButton button in buttons)
             {

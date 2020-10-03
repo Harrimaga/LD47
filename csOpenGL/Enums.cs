@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace LD47
 {
-    class Enums
+    public class Enums
     {
+        public enum Nation
+        {
+            Brittain, Germany, USA, Japan
+        }
     }
 }
