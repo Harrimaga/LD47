@@ -12,7 +12,7 @@ namespace LD47.Ships
         protected Enums.Nation nation;
         protected Vector2 position;
         protected int health, tex, w, h;
-        protected Sprite sprite;
+        protected AnimatedSprite sprite;
 
         public Plane(Enums.Nation nation, Vector2 position, int tex, int w, int h, int health = 1)
         {
@@ -24,7 +24,7 @@ namespace LD47.Ships
             this.h = h;
 
 
-            sprite = new Sprite(w, h, 0, tex);
+            sprite = new AnimatedSprite(w, h, tex, 5);
         }
 
         public abstract void AIMovement();
