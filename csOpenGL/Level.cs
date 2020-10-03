@@ -31,6 +31,7 @@ namespace LD47
         {
             waves = new List<EnemyWave>();
             waves.Add(new BasicWave<TestEnemy>(120, 120, 5, new OpenTK.Vector2(200, 45)));
+            waves.Add(new AAWave(400, 80, 2 , new OpenTK.Vector2(0,0)));
         }
 
         public void addPlane(Plane p)
