@@ -1,4 +1,5 @@
-﻿using LD47.Weapons;
+﻿using LD47.Ships;
+using LD47.Weapons;
 using OpenTK.Graphics.OpenGL;
 using QuickFont;
 using Secretary;
@@ -23,6 +24,8 @@ namespace LD47
         public static Level currentLevel;
 
         public static List<Projectile> projectiles;
+
+        public static Player player;
 
         public static bool checkCol(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)
         {
