@@ -1,5 +1,7 @@
 ﻿using LD47.Weapons;
+using OpenTK.Graphics.OpenGL;
 using QuickFont;
+using Secretary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +10,17 @@ using System.Threading.Tasks;
 
 namespace LD47
 {
-    class Globals
+    public class Globals
     {
+        public static ulong levelScore = 0;
+        public static State state;
+        public static Logger Logger = new Logger("data/log.txt");
+        public static LeaderBoardUI leaderBoardUI;
 
         public static int Width, Height;
         public static QFont buttonFont = new QFont("Fonts/arial.ttf", 16, new QuickFont.Configuration.QFontBuilderConfiguration(true));
         public static double delta, difficulty = 1;
+        public static Level currentLevel;
 
         public static List<Projectile> projectiles;
 

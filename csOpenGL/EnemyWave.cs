@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LD47
 {
-    class EnemyWave
+    public class EnemyWave
     {
 
         public double startTime, interval, spawnTimer = 0;

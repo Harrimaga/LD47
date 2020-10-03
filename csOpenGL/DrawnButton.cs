@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LD47
 {
-    class DrawnButton
+    public class DrawnButton
     {
         public delegate void EventAction();
 

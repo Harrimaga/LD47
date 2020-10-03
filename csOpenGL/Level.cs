@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LD47.Ships;
+using LD47.Waves;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,19 +8,26 @@ using System.Threading.Tasks;
 
 namespace LD47
 {
-    class Level
+    public class Level
     {
         public const int gameHeight = 1000;
         public Texture background;
         public double timePassed = 0;
         public List<EnemyWave> waves;
+        public List<Plane> planes;
 
         public Level(int background)
         {
             this.background = Textures.Get(background);
             waves = new List<EnemyWave>();
-            //waves.Add(new EnemyWave(120, 2, 20));
+            planes = new List<Plane>();
+            waves.Add(new BasicWave<TestEnemy>(120, 20, 5, new OpenTK.Vector2(200, 45)));
             //waves.Add(new EnemyWave(12, 2, 2));
+        }
+
+        public void addPlane(Plane p)
+        {
+            planes.Add(p);
         }
 
         public void Update()
@@ -42,12 +51,19 @@ namespace LD47
                     i--;
                 }
             }
-
+            foreach(Plane p in planes)
+            {
+                p.AIMovement();
+            }
         }
 
         public void draw()
         {
             background.AddToList(45, 45, 1, 1, 1, 1, (int)timePassed , background.totW, gameHeight);
+            foreach(Plane p in planes)
+            {
+                p.Draw();
+            }
         }
 
     }

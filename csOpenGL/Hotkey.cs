@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LD47
 {
-    class Hotkey
+    public class Hotkey
     {
 
         private bool repeat;

@@ -7,7 +7,7 @@ using NAudio.Wave;
 
 namespace LD47
 {
-    class SoundManager
+    public class SoundManager
     {
 
         private static WaveOut music = null;

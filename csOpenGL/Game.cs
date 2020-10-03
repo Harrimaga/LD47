@@ -1,6 +1,7 @@
 ﻿using LD47.Ships;
 using LD47.Weapons;
 using OpenTK.Input;
+using Secretary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LD47
 {
-    class Game
+    public class Game
     {
 
         public Window window;
@@ -26,11 +27,40 @@ namespace LD47
         {
             this.window = window;
             OnLoad();
+            Globals.currentLevel = l;
         }
 
         public void OnLoad()
         {
             Globals.projectiles = new List<Projectile>();
+            // Check if a savestate exists already
+            if ( FileHandler.FileExists("data/save.state") )
+            {
+                try
+                {
+                    Globals.state = FileHandler.Read<State>("data/save.state");
+                } catch(Exception e)
+                {
+                    Globals.Logger.Log(e.Message, LogLevel.ERROR);
+                }
+
+            }
+
+            if (Globals.state == null)
+            {
+                Globals.state = new State();
+                try
+                {
+                    FileHandler.Write(Globals.state, "data/save.state", true);
+                } catch(Exception e)
+                {
+                    Globals.Logger.Log(e.Message, LogLevel.ERROR);
+                }
+            }
+
+            // Create leaderBoardUI
+            Globals.leaderBoardUI = new LeaderBoardUI(50, 250, Globals.state.Highscores);
+
         }
 
         public void Update(double delta)
@@ -61,6 +91,9 @@ namespace LD47
             {
                 button.Draw();
             }
+
+            Globals.leaderBoardUI.Draw();
+
         }
 
         public void MouseDown(MouseButtonEventArgs e, int mx, int my)
