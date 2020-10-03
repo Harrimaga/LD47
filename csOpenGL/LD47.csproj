@@ -9,8 +9,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{4A23D42A-34D7-4C42-BCBB-FF2087CD6CC8}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>csOpenGL</RootNamespace>
-    <AssemblyName>csOpenGL</AssemblyName>
+    <RootNamespace>LD47</RootNamespace>
+    <AssemblyName>LD47</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DrawnButton.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="Hotkey.cs" />
