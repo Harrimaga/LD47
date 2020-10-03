@@ -130,6 +130,8 @@
     <Compile Include="Hotkey.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="LeaderBoardUI.cs" />
+    <Compile Include="Powerup\Pickupable.cs" />
+    <Compile Include="Powerup\Restore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shader.cs" />
