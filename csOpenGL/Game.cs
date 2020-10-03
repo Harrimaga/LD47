@@ -16,7 +16,7 @@ namespace LD47
         private Hotkey up = new Hotkey(true).AddKey(Key.W).AddKey(Key.Up);
         private Hotkey down = new Hotkey(true).AddKey(Key.S).AddKey(Key.Down);
 
-        private Sprite s = new Sprite(Globals.Width, Globals.Height, 0, 0);
+        private Level l = new Level(2);
         public List<DrawnButton> buttons = new List<DrawnButton>();
 
         public Game(Window window)
@@ -33,17 +33,20 @@ namespace LD47
 
         public void Update(double delta)
         {
+            Globals.delta = delta;
             //Updating logic
             if (left.IsDown()) Window.camX -= (float)(10 * delta);
             if (right.IsDown()) Window.camX += (float)(10 * delta);
             if (up.IsDown()) Window.camY -= (float)(10 * delta);
             if (down.IsDown()) Window.camY += (float)(10 * delta);
+
+            l.Update();
         }
 
         public void Draw()
         {
             //Do all you draw calls here
-            s.Draw(0, 0);
+            l.draw();
             foreach (DrawnButton button in buttons)
             {
                 button.Draw();
