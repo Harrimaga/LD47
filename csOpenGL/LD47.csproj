@@ -209,6 +209,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Textures\Maps\MapLondonDortmund.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Textures\Pixel.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

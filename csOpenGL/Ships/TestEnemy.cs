@@ -10,7 +10,7 @@ namespace LD47.Ships
     class TestEnemy : EnemyPlane
     {
 
-        public TestEnemy(Vector2 position) : base(Enums.Nation.Germany, position, 5, 25, 25, 10)
+        public TestEnemy(Vector2 position) : base(Enums.Nation.Germany, position, 5, 25, 25, 120)
         {
 
         }

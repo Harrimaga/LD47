@@ -17,6 +17,7 @@ namespace LD47
         public static State state;
         public static Logger Logger = new Logger("data/log.txt");
         public static LeaderBoardUI leaderBoardUI;
+        public static string playerName = "HEY";
 
         public static int Width, Height;
         public static QFont buttonFont = new QFont("Fonts/arial.ttf", 16, new QuickFont.Configuration.QFontBuilderConfiguration(true));

@@ -32,5 +32,8 @@ namespace LD47.Ships
         public abstract void Draw();
         public abstract void Shoot();
         public abstract void ShootAt(Plane target);
+
+        public abstract void OnDeath();
+
     }
 }

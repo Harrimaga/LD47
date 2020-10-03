@@ -26,6 +26,10 @@ namespace LD47.Weapons
         public bool Update(double delta)
         {
             position += new Vector2((float)(speed.X * delta), (float)(speed.Y * delta));
+            if(!Globals.checkCol(1920/2 - 400, 45, 800, Level.gameHeight, position.X, position.Y, sprite.w, sprite.h))
+            {
+                return true;
+            }
             if(origin is Player)
             {
                 foreach(Plane p in Globals.currentLevel.planes)

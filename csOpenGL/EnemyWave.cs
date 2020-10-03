@@ -16,7 +16,7 @@ namespace LD47
         public EnemyWave(double startTime, double interval, int spawnAmount)
         {
             this.startTime = startTime;
-            this.interval = interval;
+            this.interval = interval/Globals.difficulty;
             this.spawnAmount = (int)(spawnAmount * Globals.difficulty);
         }
 
