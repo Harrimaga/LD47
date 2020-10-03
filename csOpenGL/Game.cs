@@ -106,7 +106,7 @@ namespace LD47
 
         public void CreateMainMenu()
         {
-            buttons.Add(new DrawnButton("Level 1", 1920 / 2 - 200, 50, 400, 100, () => StartLevel<Level>(Enums.Nation.Brittain, Textures.testLevel), 1, 0.05f, 0.05f, 0.05f));
+            buttons.Add(new DrawnButton("Level 1", 1920 / 2 - 200, 50, 400, 100, () => StartLevel<Level>(Enums.Nation.Brittain, Textures.MapLondonDortmund), 1, 0.05f, 0.05f, 0.05f));
         }
 
         private void RemoveOverdraw()
