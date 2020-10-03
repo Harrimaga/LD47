@@ -9,7 +9,7 @@ using OpenTK.Graphics.OpenGL4;
 
 namespace LD47
 {
-    class MainShader : Shader
+    public class MainShader : Shader
     {
 
         private int vao, vbo, ssbo;
@@ -85,7 +85,7 @@ namespace LD47
 
     }
 
-    class PassThroughShader : Shader
+    public class PassThroughShader : Shader
     {
 
         private int prev, screenSize, vao;

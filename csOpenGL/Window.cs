@@ -7,12 +7,13 @@ using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Input;
 using QuickFont;
+using Secretary;
 using SharpFont;
 
 namespace LD47
 {
 
-    class DrawList
+    public class DrawList
     {
 
         private SData[] data;
@@ -56,7 +57,7 @@ namespace LD47
 
     }
 
-    class Window : GameWindow
+    public class Window : GameWindow
     {
         public static DrawList sd, lateDraw = new DrawList();
         public static float screenScaleX, screenScaleY, camX = 0, camY = 0;
@@ -369,5 +370,17 @@ namespace LD47
             //AddShader(new BloomShader());
         }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            try
+            {
+                FileHandler.Write(Globals.state, "data/save.state");
+            }catch(Exception ex)
+            {
+                Globals.Logger.Log(ex.Message, LogLevel.ERROR);
+            }
+
+            base.OnClosed(e);
+        }
     }
 }

@@ -9,16 +9,17 @@ using SixLabors.ImageSharp.Processing;
 
 namespace LD47
 {
-    class Textures
+    public class Textures
     {
 
         public static List<Texture> list = new List<Texture>();
-        public const int test = 0, pixel = 1;
+        public const int test = 0, pixel = 1, testLevel = 2;
 
         public static void Load()
         {
             list.Add(new Texture("Textures/Test.png", 1920, 1080, 1920, 1080));
             list.Add(new Texture("Textures/Pixel.png", 1, 1, 1, 1));
+            list.Add(new Texture("Textures/TestBackground.png", 800, 3600, 800, Level.gameHeight));
         }
 
         public static Texture Get(int i)
@@ -27,11 +28,11 @@ namespace LD47
         }
 
     }
-    class Texture
+    public class Texture
     {
 
         public long Handle;
-        int totW, totH, sW, sH, wNum, hNum;
+        public int totW, totH, sW, sH, wNum, hNum;
 
         public Texture(string file, int totW, int totH, int sW, int sH)
         {
@@ -98,6 +99,18 @@ namespace LD47
             {
                 Window.lateDraw.Add(new SData(Handle, (int)(w * Window.screenScaleX), (int)(h * Window.screenScaleY), x * Window.screenScaleX, y * Window.screenScaleY, scaleX * Window.screenScaleX, scaleY * Window.screenScaleY, sX, sY, r, g, b, a, rot));
             }
+
+        }
+
+        public void AddToList(float x, float y, float r, float g, float b, float a, int yOff, int w, int h)
+        {
+
+            int sX = 0;
+            int sY = yOff;
+            float scaleX = (float)(w) / sW;
+            float scaleY = (float)(h) / sH;
+            Window.sd.Add(new SData(Handle, (int)(w * Window.screenScaleX), (int)(h * Window.screenScaleY), x * Window.screenScaleX, y * Window.screenScaleY, scaleX * Window.screenScaleX, scaleY * Window.screenScaleY, sX, sY, r, g, b, a, 0));
+
 
         }
 

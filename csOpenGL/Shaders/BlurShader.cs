@@ -9,7 +9,7 @@ using OpenTK.Graphics.OpenGL4;
 
 namespace LD47
 {
-    class BlurShader : Shader
+    public class BlurShader : Shader
     {
 
         private int prev, screenSize;

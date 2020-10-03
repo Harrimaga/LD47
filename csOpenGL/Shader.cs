@@ -9,12 +9,12 @@ using OpenTK.Graphics.OpenGL4;
 namespace LD47
 {
 
-    class Shaders
+    public class Shaders
     {
         public const int basic = 1, blur = 2, bloom = 3;
     }
 
-    class Shader
+    public class Shader
     {
 
         public int Handle;

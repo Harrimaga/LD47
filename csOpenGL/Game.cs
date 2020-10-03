@@ -1,4 +1,7 @@
-﻿using OpenTK.Input;
+﻿using LD47.Ships;
+using LD47.Weapons;
+using OpenTK.Input;
+using Secretary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,47 +10,90 @@ using System.Threading.Tasks;
 
 namespace LD47
 {
-    class Game
+    public class Game
     {
 
         public Window window;
-        private Hotkey left = new Hotkey(true).AddKey(Key.A).AddKey(Key.Left);
-        private Hotkey right = new Hotkey(true).AddKey(Key.D).AddKey(Key.Right);
-        private Hotkey up = new Hotkey(true).AddKey(Key.W).AddKey(Key.Up);
-        private Hotkey down = new Hotkey(true).AddKey(Key.S).AddKey(Key.Down);
-
-        private Sprite s = new Sprite(Globals.Width, Globals.Height, 0, 0);
+        
+        private Level l = new Level(Textures.testLevel);
         public List<DrawnButton> buttons = new List<DrawnButton>();
+
+
+        public Player player = new Player(Enums.Nation.Brittain);
+        
+
 
         public Game(Window window)
         {
             this.window = window;
             OnLoad();
+            Globals.currentLevel = l;
         }
 
         public void OnLoad()
         {
-            buttons.Add(new DrawnButton("test", 0, 0, 200, 100, () => { Window.window.ToggleShader(1); }, 0.5f, 0.5f, 0.5f));
-            buttons.Add(new DrawnButton("test2", 0, 105, 200, 100, () => { Window.window.ToggleShader(2); }, 0.5f, 0.5f, 0.5f));
+            Globals.projectiles = new List<Projectile>();
+            // Check if a savestate exists already
+            if ( FileHandler.FileExists("data/save.state") )
+            {
+                try
+                {
+                    Globals.state = FileHandler.Read<State>("data/save.state");
+                } catch(Exception e)
+                {
+                    Globals.Logger.Log(e.Message, LogLevel.ERROR);
+                }
+
+            }
+
+            if (Globals.state == null)
+            {
+                Globals.state = new State();
+                try
+                {
+                    FileHandler.Write(Globals.state, "data/save.state", true);
+                } catch(Exception e)
+                {
+                    Globals.Logger.Log(e.Message, LogLevel.ERROR);
+                }
+            }
+
+            // Create leaderBoardUI
+            Globals.leaderBoardUI = new LeaderBoardUI(50, 250, Globals.state.Highscores);
+
         }
 
         public void Update(double delta)
         {
+            Globals.delta = delta;
             //Updating logic
-            if (left.IsDown()) Window.camX -= (float)(10 * delta);
-            if (right.IsDown()) Window.camX += (float)(10 * delta);
-            if (up.IsDown()) Window.camY -= (float)(10 * delta);
-            if (down.IsDown()) Window.camY += (float)(10 * delta);
+            player.Update(delta);
+            foreach (Projectile projectile in Globals.projectiles)
+            {
+                projectile.Update(delta);
+            }
+
+            l.Update();
         }
 
         public void Draw()
         {
             //Do all you draw calls here
-            s.Draw(0, 0);
+
+            foreach (Projectile projectile in Globals.projectiles)
+            {
+                projectile.Draw();
+            }
+            l.draw();
+
+            player.Draw();
             foreach (DrawnButton button in buttons)
             {
                 button.Draw();
             }
+
+            Globals.leaderBoardUI.Draw();
+
         }
 
         public void MouseDown(MouseButtonEventArgs e, int mx, int my)
