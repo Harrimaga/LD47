@@ -32,7 +32,6 @@ namespace LD47
 
         public void OnLoad()
         {
-            Globals.projectiles = new List<Projectile>();
             // Check if a savestate exists already
             if ( FileHandler.FileExists("data/save.state") )
             {
@@ -68,10 +67,6 @@ namespace LD47
             Globals.delta = delta;
             //Updating logic
             player.Update(delta);
-            foreach (Projectile projectile in Globals.projectiles)
-            {
-                projectile.Update(delta);
-            }
 
             l.Update();
         }
@@ -80,10 +75,6 @@ namespace LD47
         {
             //Do all you draw calls here
 
-            foreach (Projectile projectile in Globals.projectiles)
-            {
-                projectile.Draw();
-            }
             l.draw();
 
             player.Draw();

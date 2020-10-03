@@ -34,7 +34,7 @@ namespace LD47.Ships
 
         public override void Shoot()
         {
-            Globals.projectiles.Add(new Weapons.Projectile(this, new Vector2(0, -10), position + new Vector2(w / 2 - 2, -10), 4, 8, 4));
+            Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, new Vector2(0, -10), position + new Vector2(w / 2 - 2, -10), 4, 8, 4));
         }
 
         public override void ShootAt(Plane target)
@@ -44,10 +44,42 @@ namespace LD47.Ships
 
         public override void Update(double delta)
         {
-            if (left.IsDown()) position.X -= (float)(10 * delta);
-            if (right.IsDown()) position.X += (float)(10 * delta);
-            if (up.IsDown()) position.Y -= (float)(10 * delta);
-            if (down.IsDown()) position.Y += (float)(10 * delta);
+            if (left.IsDown())
+            {
+                position.X -= (float)(10 * delta);
+                if (position.X < 1920 / 2 - 400)
+                {
+                    position.X = 1920 / 2 - 400;
+                }
+            }
+
+            if (right.IsDown())
+            {
+                position.X += (float)(10 * delta);
+                if (position.X > 1920 / 2 + 400 - 64)
+                {
+                    position.X = 1920 / 2 + 400 - 64;
+                }
+            }
+
+            if (up.IsDown())
+            {
+                position.Y -= (float)(10 * delta);
+                if (position.Y < 45)
+                {
+                    position.Y = 45;
+                }
+            }
+
+            if (down.IsDown())
+            {
+                position.Y += (float)(10 * delta);
+                if (position.Y > 1080 - 109)
+                {
+                    position.Y = 1080 - 109;
+                }
+            }
+
             if (space.IsDown()) Shoot();
         }
     }
