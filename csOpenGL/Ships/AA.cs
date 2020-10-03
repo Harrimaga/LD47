@@ -55,7 +55,7 @@ namespace LD47.Ships
 
         public override void OnDeath()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

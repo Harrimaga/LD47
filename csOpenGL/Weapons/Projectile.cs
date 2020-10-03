@@ -34,6 +34,7 @@ namespace LD47.Weapons
             {
                 foreach(Plane p in Globals.currentLevel.planes)
                 {
+                    if (p is AA) continue;
                     if(Globals.checkCol((int)position.X, (int)position.Y, sprite.w, sprite.h, (int)p.position.X, (int)p.position.Y, p.w, p.h))
                     {
                         p.health--;
