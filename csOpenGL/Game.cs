@@ -1,4 +1,5 @@
 ﻿using OpenTK.Input;
+using Secretary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,31 @@ namespace LD47
 
         public void OnLoad()
         {
+            // Check if a savestate exists already
+            if ( FileHandler.FileExists("data/save.state") )
+            {
+                try
+                {
+                    Globals.state = FileHandler.Read<State>("data/save.state");
+                } catch(Exception e)
+                {
+                    Globals.Logger.Log(e.Message, LogLevel.ERROR);
+                }
+
+            }
+
+            if (Globals.state == null)
+            {
+                Globals.state = new State();
+                try
+                {
+                    FileHandler.Write(Globals.state, "data/save.state", true);
+                } catch(Exception e)
+                {
+                    Globals.Logger.Log(e.Message, LogLevel.ERROR);
+                }
+            }
+
             buttons.Add(new DrawnButton("test", 0, 0, 200, 100, () => { Window.window.ToggleShader(1); }, 0.5f, 0.5f, 0.5f));
             buttons.Add(new DrawnButton("test2", 0, 105, 200, 100, () => { Window.window.ToggleShader(2); }, 0.5f, 0.5f, 0.5f));
         }

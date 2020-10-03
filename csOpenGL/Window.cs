@@ -7,6 +7,7 @@ using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Input;
 using QuickFont;
+using Secretary;
 using SharpFont;
 
 namespace LD47
@@ -369,5 +370,17 @@ namespace LD47
             //AddShader(new BloomShader());
         }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            try
+            {
+                FileHandler.Write(Globals.state, "data/save.state");
+            }catch(Exception e)
+            {
+                Globals.Logger.Log(e.Message, LogLevel.ERROR);
+            }
+
+            base.OnClosed(e);
+        }
     }
 }
