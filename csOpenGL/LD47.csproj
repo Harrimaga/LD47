@@ -138,6 +138,7 @@
     <Compile Include="Shaders\BasicPostShader.cs" />
     <Compile Include="Shaders\BlurShader.cs" />
     <Compile Include="Shaders\MainShader.cs" />
+    <Compile Include="Ships\EnemyPlane.cs" />
     <Compile Include="Ships\TestEnemy.cs" />
     <Compile Include="Ships\Plane.cs" />
     <Compile Include="Ships\Player.cs" />
@@ -210,6 +211,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Textures\Projectiles\Projectile1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Ships\Germany\GERBomber1gun.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Textures\Ships\Uk\UKBomber1gun.png">

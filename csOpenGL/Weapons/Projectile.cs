@@ -23,9 +23,29 @@ namespace LD47.Weapons
             sprite = new Sprite(w, h, 0, tex);
         }
 
-        public void Update(double delta)
+        public bool Update(double delta)
         {
             position += new Vector2((float)(speed.X * delta), (float)(speed.Y * delta));
+            if(origin is Player)
+            {
+                foreach(Plane p in Globals.currentLevel.planes)
+                {
+                    if(Globals.checkCol((int)position.X, (int)position.Y, sprite.w, sprite.h, (int)p.position.X, (int)p.position.Y, p.w, p.h))
+                    {
+                        p.health--;
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                if (Globals.checkCol((int)position.X, (int)position.Y, sprite.w, sprite.h, (int)Globals.player.position.X, (int)Globals.player.position.Y, Globals.player.w, Globals.player.h))
+                {
+                    Globals.player.health--;
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void Draw()

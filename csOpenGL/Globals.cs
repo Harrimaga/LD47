@@ -22,6 +22,7 @@ namespace LD47
         public static QFont buttonFont = new QFont("Fonts/arial.ttf", 16, new QuickFont.Configuration.QFontBuilderConfiguration(true));
         public static double delta, difficulty = 1;
         public static Level currentLevel;
+        public static Player player;
 
         public static List<Projectile> projectiles;
 

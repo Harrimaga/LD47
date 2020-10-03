@@ -23,7 +23,7 @@ namespace LD47
             this.background = Textures.Get(background);
             waves = new List<EnemyWave>();
             planes = new List<Plane>();
-            waves.Add(new BasicWave<TestEnemy>(120, 20, 5, new OpenTK.Vector2(200, 45)));
+            waves.Add(new BasicWave<TestEnemy>(120, 120, 5, new OpenTK.Vector2(200, 45)));
             projectiles = new List<Projectile>();
             //waves.Add(new EnemyWave(12, 2, 2));
         }
@@ -54,14 +54,22 @@ namespace LD47
                     i--;
                 }
             }
-            foreach(Plane p in planes)
+            for (int i = planes.Count - 1; i >= 0; i--)
             {
-                p.AIMovement();
+                if(planes[i].health <= 0)
+                {
+                    planes.RemoveAt(i);
+                    continue;
+                }
+                planes[i].Update(Globals.delta);
             }
 
-            foreach (Projectile p in projectiles)
+            for(int i = projectiles.Count-1; i >= 0; i--)
             {
-                p.Update(Globals.delta);
+                if(projectiles[i].Update(Globals.delta))
+                {
+                    projectiles.RemoveAt(i);
+                }
             }
         }
 

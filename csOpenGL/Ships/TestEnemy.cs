@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace LD47.Ships
 {
-    class TestEnemy : Plane
+    class TestEnemy : EnemyPlane
     {
 
-        public TestEnemy(Vector2 position) : base(Enums.Nation.USA, position, 1, 25, 25)
+        public TestEnemy(Vector2 position) : base(Enums.Nation.Germany, position, 5, 25, 25, 10)
         {
 
         }
@@ -23,22 +23,6 @@ namespace LD47.Ships
         public override void Shoot()
         {
             
-        }
-
-        public override void ShootAt(Plane target)
-        {
-            
-        }
-
-        public override void Update(double delta)
-        {
-            
-        }
-
-
-        public override void Draw()
-        {
-            sprite.Draw(position.X, position.Y, true, 0, 1, 1, 1, 1);
         }
 
 
