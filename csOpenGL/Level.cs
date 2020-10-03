@@ -1,5 +1,6 @@
 ﻿using LD47.Ships;
 using LD47.Waves;
+using LD47.Weapons;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace LD47
         public double timePassed = 0;
         public List<EnemyWave> waves;
         public List<Plane> planes;
+        public List<Projectile> projectiles;
 
         public Level(int background)
         {
@@ -22,6 +24,7 @@ namespace LD47
             waves = new List<EnemyWave>();
             planes = new List<Plane>();
             waves.Add(new BasicWave<TestEnemy>(120, 120, 5, new OpenTK.Vector2(200, 45)));
+            projectiles = new List<Projectile>();
             //waves.Add(new EnemyWave(12, 2, 2));
         }
 
@@ -55,12 +58,22 @@ namespace LD47
             {
                 p.Update(Globals.delta);
             }
+
+            foreach (Projectile p in projectiles)
+            {
+                p.Update(Globals.delta);
+            }
         }
 
         public void draw()
         {
-            background.AddToList(45, 45, 1, 1, 1, 1, (int)timePassed , background.totW, gameHeight);
+            background.AddToList(1920 / 2 - 400, 45, 1, 1, 1, 1, (int)timePassed , background.totW, gameHeight);
             foreach(Plane p in planes)
+            {
+                p.Draw();
+            }
+
+            foreach (Projectile p in projectiles)
             {
                 p.Draw();
             }

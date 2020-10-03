@@ -17,7 +17,7 @@ namespace LD47.Ships
         private Hotkey space = new Hotkey(false).AddKey(Key.Space);
 
 
-        public Player(Enums.Nation nation) : base(nation, new Vector2(1920/2, 1080/2), 1, 16, 16, 3)
+        public Player(Enums.Nation nation) : base(nation, new Vector2(1920/2, 1080/2), 3, 64, 64, 3)
         {
 
         }
@@ -34,7 +34,7 @@ namespace LD47.Ships
 
         public override void Shoot()
         {
-            Globals.projectiles.Add(new Weapons.Projectile(this, new Vector2(0, -10), position + new Vector2(6, -10), 4, 8, 1));
+            Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, new Vector2(0, -10), position + new Vector2(w / 2 - 2, -10), 4, 8, 4));
         }
 
         public override void ShootAt(Plane target)
@@ -44,10 +44,42 @@ namespace LD47.Ships
 
         public override void Update(double delta)
         {
-            if (left.IsDown()) position.X -= (float)(10 * delta);
-            if (right.IsDown()) position.X += (float)(10 * delta);
-            if (up.IsDown()) position.Y -= (float)(10 * delta);
-            if (down.IsDown()) position.Y += (float)(10 * delta);
+            if (left.IsDown())
+            {
+                position.X -= (float)(10 * delta);
+                if (position.X < 1920 / 2 - 400)
+                {
+                    position.X = 1920 / 2 - 400;
+                }
+            }
+
+            if (right.IsDown())
+            {
+                position.X += (float)(10 * delta);
+                if (position.X > 1920 / 2 + 400 - 64)
+                {
+                    position.X = 1920 / 2 + 400 - 64;
+                }
+            }
+
+            if (up.IsDown())
+            {
+                position.Y -= (float)(10 * delta);
+                if (position.Y < 45)
+                {
+                    position.Y = 45;
+                }
+            }
+
+            if (down.IsDown())
+            {
+                position.Y += (float)(10 * delta);
+                if (position.Y > 1080 - 109)
+                {
+                    position.Y = 1080 - 109;
+                }
+            }
+
             if (space.IsDown()) Shoot();
         }
     }
