@@ -50,14 +50,13 @@ namespace LD47
         {
             //Do all you draw calls here
 
-            player.Draw();
             foreach (Projectile projectile in Globals.projectiles)
             {
                 projectile.Draw();
             }
-
-
             l.draw();
+
+            player.Draw();
             foreach (DrawnButton button in buttons)
             {
                 button.Draw();
