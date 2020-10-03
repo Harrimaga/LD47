@@ -35,11 +35,11 @@ void main()
 	if(posi.y < 0) {
 		posi.y = 0;
 	}
-	if(posi.x > int(s.startx + 0.9995*s.w/s.scalex)) {
-		posi.x = int(s.startx + 0.9995*s.w/s.scalex);
+	if(posi.x > int(s.startx + 0.995*s.w/s.scalex)) {
+		posi.x = int(s.startx + 0.995*s.w/s.scalex);
 	}
-	if(posi.y > int(s.starty + 0.9995*s.h/s.scaley)) {
-		posi.y = int(s.starty + 0.9995*s.h/s.scaley);
+	if(posi.y > int(s.starty + 0.995*s.h/s.scaley)) {
+		posi.y = int(s.starty + 0.995*s.h/s.scaley);
 	}
     vec4 sd = imageLoad(myImage, posi) * vec4(s.r, s.g, s.b, s.a);
     gl_FragColor = sd;
