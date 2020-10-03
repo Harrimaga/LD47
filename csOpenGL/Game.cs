@@ -20,7 +20,7 @@ namespace LD47
 
 
         public Player player = new Player(Enums.Nation.Brittain);
-        
+
 
 
         public Game(Window window)
@@ -34,12 +34,13 @@ namespace LD47
         public void OnLoad()
         {
             // Check if a savestate exists already
-            if ( FileHandler.FileExists("data/save.state") )
+            if (FileHandler.FileExists("data/save.state"))
             {
                 try
                 {
                     Globals.state = FileHandler.Read<State>("data/save.state");
-                } catch(Exception e)
+                }
+                catch (Exception e)
                 {
                     Globals.Logger.Log(e.Message, LogLevel.ERROR);
                 }
@@ -52,7 +53,8 @@ namespace LD47
                 try
                 {
                     FileHandler.Write(Globals.state, "data/save.state", true);
-                } catch(Exception e)
+                }
+                catch (Exception e)
                 {
                     Globals.Logger.Log(e.Message, LogLevel.ERROR);
                 }
@@ -60,64 +62,88 @@ namespace LD47
 
             // Create leaderBoardUI
             Globals.leaderBoardUI = new LeaderBoardUI(50, 250, Globals.state.Highscores);
-
+            CreateMainMenu();
         }
 
         public void Update(double delta)
         {
             Globals.delta = delta;
             //Updating logic
-            if(player.health <= 0)
+            switch (Globals.gamesState)
             {
-                PlayerDied();
-                return;
-            }
-            player.Update(delta);
+                case Enums.GamesState.Playing:
+                    if (player.health <= 0)
+                    {
+                        PlayerDied();
+                        return;
+                    }
+                    player.Update(delta);
 
-            l.Update();
+                    l.Update();
+                    break;
+            }
+        }
+
+        public void StartLevel<T>(Enums.Nation playernation, int backgroundImage)
+        {
+            
+            player = new Player(playernation);
+            Globals.player = player;
+            Globals.levelScore = 0;
+            Globals.currentLevel = (Level)Activator.CreateInstance(typeof(T), new object[] { backgroundImage });
+            l = Globals.currentLevel;
+            Globals.gamesState = Enums.GamesState.Playing;
+            buttons.Clear();
         }
 
         public void PlayerDied()
         {
-            player = new Player(Enums.Nation.Brittain);
-            Globals.player = player;
             Globals.leaderBoardUI.AddToLeaderboard(new Score(Globals.playerName, Globals.levelScore));
             Globals.levelScore = 0;
-            Globals.currentLevel = new Level(Textures.testLevel);
-            l = Globals.currentLevel;
+            Globals.gamesState = Enums.GamesState.MainMenu;
+            CreateMainMenu();
+        }
+
+        public void CreateMainMenu()
+        {
+            buttons.Add(new DrawnButton("Level 1", 1920 / 2 - 200, 50, 400, 100, () => StartLevel<Level>(Enums.Nation.Brittain, Textures.testLevel), 1, 0.05f, 0.05f, 0.05f));
         }
 
         private void RemoveOverdraw()
         {
             Sprite s = new Sprite(1920 / 2 - 400, 1080, 0, 1);
             s.Draw(0, 0, false, 0, 0, 0, 0, 1);
-            s.Draw(1920/2+400, 0, false, 0, 0, 0, 0, 1);
+            s.Draw(1920 / 2 + 400, 0, false, 0, 0, 0, 0, 1);
             s = new Sprite(800, 45, 0, 1);
             s.Draw(1920 / 2 - 400, 0, false, 0, 0, 0, 0, 1);
-            s.Draw(1920 / 2 - 400, 1080-45, false, 0, 0, 0, 0, 1);
+            s.Draw(1920 / 2 - 400, 1080 - 45, false, 0, 0, 0, 0, 1);
         }
 
         public void Draw()
         {
             //Do all you draw calls here
-
-            l.draw();
-            foreach (Projectile projectile in Globals.currentLevel.projectiles)
+            switch (Globals.gamesState)
             {
-                projectile.Draw();
+                case Enums.GamesState.Playing: // PLAYING
+                    l.draw();
+                    foreach (Projectile projectile in Globals.currentLevel.projectiles)
+                    {
+                        projectile.Draw();
+                    }
+
+                    player.Draw();
+
+                    RemoveOverdraw();
+
+                    Window.window.DrawText("SCORE: " + Globals.levelScore, 5, 5);
+                    Globals.leaderBoardUI.Draw();
+                    break;
             }
-
-            player.Draw();
-
-            RemoveOverdraw();
 
             foreach (DrawnButton button in buttons)
             {
                 button.Draw();
             }
-
-            Window.window.DrawText("SCORE: " + Globals.levelScore, 5, 5);
-            Globals.leaderBoardUI.Draw();
 
         }
 

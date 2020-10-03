@@ -12,5 +12,10 @@ namespace LD47
         {
             Brittain, Germany, USA, Japan
         }
+
+        public enum GamesState
+        {
+            MainMenu, Playing
+        }
     }
 }

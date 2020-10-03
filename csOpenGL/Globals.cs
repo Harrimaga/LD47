@@ -24,6 +24,7 @@ namespace LD47
         public static double delta, difficulty = 1;
         public static Level currentLevel;
         public static Player player;
+        public static Enums.GamesState gamesState = Enums.GamesState.MainMenu;
 
         public static List<Projectile> projectiles;
 
