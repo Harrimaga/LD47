@@ -58,6 +58,7 @@ namespace LD47
             {
                 if(planes[i].health <= 0)
                 {
+                    planes[i].OnDeath();
                     planes.RemoveAt(i);
                     continue;
                 }

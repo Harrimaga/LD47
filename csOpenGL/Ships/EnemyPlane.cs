@@ -39,5 +39,10 @@ namespace LD47.Ships
             Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, new Vector2(0, 20), position + new Vector2(w / 2, h / 2) - new Vector2(3, 3), 6, 6, 1));
         }
 
+        public override void OnDeath()
+        {
+            Globals.levelScore += (ulong)(100*Globals.difficulty);
+        }
+
     }
 }

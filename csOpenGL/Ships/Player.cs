@@ -82,5 +82,11 @@ namespace LD47.Ships
 
             if (space.IsDown()) Shoot();
         }
+
+        public override void OnDeath()
+        {
+            
+        }
+
     }
 }

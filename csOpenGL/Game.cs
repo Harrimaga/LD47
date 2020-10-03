@@ -67,9 +67,24 @@ namespace LD47
         {
             Globals.delta = delta;
             //Updating logic
+            if(player.health <= 0)
+            {
+                PlayerDied();
+                return;
+            }
             player.Update(delta);
 
             l.Update();
+        }
+
+        public void PlayerDied()
+        {
+            player = new Player(Enums.Nation.Brittain);
+            Globals.player = player;
+            Globals.leaderBoardUI.AddToLeaderboard(new Score(Globals.playerName, Globals.levelScore));
+            Globals.levelScore = 0;
+            Globals.currentLevel = new Level(Textures.testLevel);
+            l = Globals.currentLevel;
         }
 
         public void Draw()
@@ -88,6 +103,7 @@ namespace LD47
                 button.Draw();
             }
 
+            Window.window.DrawText("SCORE: " + Globals.levelScore, 5, 5);
             Globals.leaderBoardUI.Draw();
 
         }
