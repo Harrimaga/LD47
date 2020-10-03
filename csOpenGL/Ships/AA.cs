@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LD47.Ships
 {
-    public class AA : Plane
+    public class AA : EnemyPlane
     {
         public float ShotInterval { get; set; }
         private float ShotDelta { get; set; }
@@ -37,8 +37,8 @@ namespace LD47.Ships
             var x = target.position.X - position.X;
             var y = target.position.Y - position.Y;
             double angle = Math.Atan( y / x );
-            float xspeed = (float) Math.Cos(angle) * 20;
-            float yspeed = (float) Math.Sin(angle) * 20;
+            float xspeed = (float) Math.Cos(angle) * 15;
+            float yspeed = (float) Math.Sin(angle) * 15;
             Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, new Vector2(xspeed, yspeed), position + new Vector2(w / 2, h / 2) - new Vector2(3, 3), 6, 6, 1));
         }
 
