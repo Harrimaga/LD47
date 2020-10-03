@@ -10,7 +10,7 @@ namespace LD47.Ships
     class TestEnemy : Plane
     {
 
-        public TestEnemy(Vector2 position) : base(Enums.Nation.USA, position, 1, 25, 25)
+        public TestEnemy(Vector2 position) : base(Enums.Nation.Germany, position, 5, 25, 25)
         {
 
         }
@@ -38,7 +38,7 @@ namespace LD47.Ships
 
         public override void Draw()
         {
-            sprite.Draw(position.X, position.Y, true, 0, 1, 1, 1, 1);
+            sprite.Draw(position.X, position.Y, true, (float)Math.PI, 1, 1, 1, 1);
         }
 
 

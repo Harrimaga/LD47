@@ -14,7 +14,7 @@ namespace LD47.Ships
         private Hotkey right = new Hotkey(true).AddKey(Key.D).AddKey(Key.Right);
         private Hotkey up = new Hotkey(true).AddKey(Key.W).AddKey(Key.Up);
         private Hotkey down = new Hotkey(true).AddKey(Key.S).AddKey(Key.Down);
-        private Hotkey space = new Hotkey(false).AddKey(Key.Space);
+        private Hotkey space = new Hotkey(true).AddKey(Key.Space);
 
 
         public Player(Enums.Nation nation) : base(nation, new Vector2(1920/2, 1080/2), 3, 64, 64, 3)
