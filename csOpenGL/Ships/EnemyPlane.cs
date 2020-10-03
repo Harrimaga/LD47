@@ -36,7 +36,7 @@ namespace LD47.Ships
 
         public override void ShootAt(Plane target)
         {
-            Globals.projectiles.Add(new Weapons.Projectile(this, new Vector2(0, 20), position + new Vector2(w / 2, h / 2) - new Vector2(3, 3), 6, 6, 1));
+            Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, new Vector2(0, 20), position + new Vector2(w / 2, h / 2) - new Vector2(3, 3), 6, 6, 1));
         }
 
     }

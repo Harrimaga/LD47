@@ -77,7 +77,7 @@ namespace LD47
             //Do all you draw calls here
 
             l.draw();
-            foreach (Projectile projectile in Globals.projectiles)
+            foreach (Projectile projectile in Globals.currentLevel.projectiles)
             {
                 projectile.Draw();
             }
