@@ -13,11 +13,12 @@ namespace LD47
     {
 
         public static List<Texture> list = new List<Texture>();
-        public const int test = 0;
+        public const int test = 0, pixel = 1;
 
         public static void Load()
         {
             list.Add(new Texture("Textures/Test.png", 1920, 1080, 1920, 1080));
+            list.Add(new Texture("Textures/Pixel.png", 1, 1, 1, 1));
         }
 
         public static Texture Get(int i)
