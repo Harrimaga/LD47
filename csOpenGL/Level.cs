@@ -12,7 +12,7 @@ namespace LD47
     public class Level
     {
         public const int gameHeight = 1000;
-        public Texture background;
+        public Texture background, clouds;
         public double timePassed = 0;
         public List<EnemyWave> waves;
         public List<Plane> planes;
@@ -22,6 +22,7 @@ namespace LD47
         public Level(int background)
         {
             this.background = Textures.Get(background);
+            clouds = Textures.Get(7);
             planes = new List<Plane>();
             projectiles = new List<Projectile>();
             AddWaves();
@@ -102,6 +103,7 @@ namespace LD47
         public void draw()
         {
             background.AddToList(1920 / 2 - 400, 45, 1, 1, 1, 1, (int)timePassed , background.totW, gameHeight);
+            clouds.AddToList(1920 / 2 - 400, 45, 1, 1, 1, 1, (int)(timePassed * 1.5f), background.totW, gameHeight);
             foreach(Plane p in planes)
             {
                 p.Draw();
