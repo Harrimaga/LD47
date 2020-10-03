@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 
 namespace LD47
 {
-    class Globals
+    public class Globals
     {
 
         public static int Width, Height;
         public static QFont buttonFont = new QFont("Fonts/arial.ttf", 16, new QuickFont.Configuration.QFontBuilderConfiguration(true));
         public static double delta, difficulty = 1;
+        public static Level currentLevel;
 
         public static List<Projectile> projectiles;
 

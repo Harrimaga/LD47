@@ -130,11 +130,13 @@
     <Compile Include="Shaders\BasicPostShader.cs" />
     <Compile Include="Shaders\BlurShader.cs" />
     <Compile Include="Shaders\MainShader.cs" />
+    <Compile Include="Ships\TestEnemy.cs" />
     <Compile Include="Ships\Plane.cs" />
     <Compile Include="Ships\Player.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="Texture.cs" />
+    <Compile Include="Waves\BasicWave.cs" />
     <Compile Include="Weapons\Projectile.cs" />
     <Compile Include="Window.cs" />
   </ItemGroup>

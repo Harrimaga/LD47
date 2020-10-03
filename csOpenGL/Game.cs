@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LD47
 {
-    class Game
+    public class Game
     {
 
         public Window window;
@@ -26,6 +26,7 @@ namespace LD47
         {
             this.window = window;
             OnLoad();
+            Globals.currentLevel = l;
         }
 
         public void OnLoad()

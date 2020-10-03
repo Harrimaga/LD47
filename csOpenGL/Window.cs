@@ -12,7 +12,7 @@ using SharpFont;
 namespace LD47
 {
 
-    class DrawList
+    public class DrawList
     {
 
         private SData[] data;
@@ -56,7 +56,7 @@ namespace LD47
 
     }
 
-    class Window : GameWindow
+    public class Window : GameWindow
     {
         public static DrawList sd, lateDraw = new DrawList();
         public static float screenScaleX, screenScaleY, camX = 0, camY = 0;

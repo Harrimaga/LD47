@@ -9,7 +9,7 @@ using OpenTK.Graphics.OpenGL4;
 
 namespace LD47
 {
-    class BasicPostShader : Shader
+    public class BasicPostShader : Shader
     {
 
         private int prev, screenSize;
