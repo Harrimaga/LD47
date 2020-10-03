@@ -10,8 +10,8 @@ namespace LD47.Ships
     public abstract class Plane
     {
         protected Enums.Nation nation;
-        protected Vector2 position;
-        protected int health, tex, w, h;
+        public Vector2 position;
+        public int health, tex, w, h;
         protected AnimatedSprite sprite;
 
         public Plane(Enums.Nation nation, Vector2 position, int tex, int w, int h, int health = 1)
