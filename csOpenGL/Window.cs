@@ -375,9 +375,9 @@ namespace LD47
             try
             {
                 FileHandler.Write(Globals.state, "data/save.state");
-            }catch(Exception e)
+            }catch(Exception ex)
             {
-                Globals.Logger.Log(e.Message, LogLevel.ERROR);
+                Globals.Logger.Log(ex.Message, LogLevel.ERROR);
             }
 
             base.OnClosed(e);

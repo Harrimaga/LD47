@@ -53,6 +53,9 @@ namespace LD47
                 }
             }
 
+            // Create leaderBoardUI
+            Globals.leaderBoardUI = new LeaderBoardUI(50, 250, Globals.state.Highscores);
+
             buttons.Add(new DrawnButton("test", 0, 0, 200, 100, () => { Window.window.ToggleShader(1); }, 0.5f, 0.5f, 0.5f));
             buttons.Add(new DrawnButton("test2", 0, 105, 200, 100, () => { Window.window.ToggleShader(2); }, 0.5f, 0.5f, 0.5f));
         }
@@ -74,6 +77,9 @@ namespace LD47
             {
                 button.Draw();
             }
+
+            Globals.leaderBoardUI.Draw();
+
         }
 
         public void MouseDown(MouseButtonEventArgs e, int mx, int my)

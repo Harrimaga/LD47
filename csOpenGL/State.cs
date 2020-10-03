@@ -11,14 +11,14 @@ namespace LD47
     {
         public ulong ScoreAccumulated { get; set; }
         public List<Enums.Nation> NationsUnlocked { get; set; }
-        public List<Score> Highscores { get; set; }
+        public Score[] Highscores { get; set; }
 
         // Used when initializing the state
         public State()
         {
             ScoreAccumulated = 0;
             NationsUnlocked  = new List<Enums.Nation>{ Enums.Nation.Brittain };
-            Highscores       = new List<Score>
+            Highscores       = new Score[] 
             {
                 new Score("ACE", 75000),
                 new Score("BOB", 60000),
