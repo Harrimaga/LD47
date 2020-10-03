@@ -14,8 +14,7 @@ namespace LD47
 
         public Window window;
         
-
-        private Sprite s = new Sprite(Globals.Width, Globals.Height, 0, 0);
+        private Level l = new Level(Textures.testLevel);
         public List<DrawnButton> buttons = new List<DrawnButton>();
 
 
@@ -31,34 +30,33 @@ namespace LD47
 
         public void OnLoad()
         {
-            buttons.Add(new DrawnButton("test", 0, 0, 200, 100, () => { Window.window.ToggleShader(1); }, 0.5f, 0.5f, 0.5f));
-            buttons.Add(new DrawnButton("test2", 0, 105, 200, 100, () => { Window.window.ToggleShader(2); }, 0.5f, 0.5f, 0.5f));
-
             Globals.projectiles = new List<Projectile>();
         }
 
         public void Update(double delta)
         {
+            Globals.delta = delta;
             //Updating logic
             player.Update(delta);
             foreach (Projectile projectile in Globals.projectiles)
             {
                 projectile.Update(delta);
             }
+
+            l.Update();
         }
 
         public void Draw()
         {
             //Do all you draw calls here
-            s.Draw(0, 0);
 
-            player.Draw();
             foreach (Projectile projectile in Globals.projectiles)
             {
                 projectile.Draw();
             }
+            l.draw();
 
-
+            player.Draw();
             foreach (DrawnButton button in buttons)
             {
                 button.Draw();
