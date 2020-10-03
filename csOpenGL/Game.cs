@@ -81,6 +81,9 @@ namespace LD47
 
                     l.Update();
                     break;
+                case Enums.GamesState.MainMenu:
+                    Hotkey.Type();
+                    break;
             }
         }
 
@@ -138,6 +141,9 @@ namespace LD47
                     Window.window.DrawText("SCORE: " + Globals.levelScore, 5, 5);
                     Window.window.DrawText("HEALTH: " + Globals.player.health, 5, 55);
                     Globals.leaderBoardUI.Draw();
+                    break;
+                case Enums.GamesState.MainMenu:
+                    Window.window.DrawText("NAME: " + Globals.playerName, 5, 5);
                     break;
             }
 
