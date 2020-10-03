@@ -38,7 +38,6 @@ namespace LD47
             if (right.IsDown()) Window.camX += (float)(10 * delta);
             if (up.IsDown()) Window.camY -= (float)(10 * delta);
             if (down.IsDown()) Window.camY += (float)(10 * delta);
-
         }
 
         public void Draw()
@@ -71,6 +70,5 @@ namespace LD47
         {
 
         }
-        
     }
 }
