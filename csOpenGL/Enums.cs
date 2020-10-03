@@ -10,7 +10,7 @@ namespace LD47
     {
         public enum Nation
         {
-            Brittain, Germany, USA, Japan
+            Britain, Germany, USA, Japan
         }
     }
 }
