@@ -20,6 +20,8 @@ namespace LD47.Ships
             this.position = position;
             this.health = health;
             this.tex = tex;
+            this.w = w;
+            this.h = h;
 
 
             sprite = new Sprite(w, h, 0, tex);

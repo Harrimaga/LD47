@@ -60,7 +60,7 @@ namespace LD47
             this.texture = Textures.Get(texture);
         }
 
-        public void Draw(float x, float y, bool cam = true, float rot = 0, float r = 1, float g = 1, float b = 1, float a = 1)
+        public virtual void Draw(float x, float y, bool cam = true, float rot = 0, float r = 1, float g = 1, float b = 1, float a = 1)
         {
             texture.AddToList(x, y, r, g, b, a, rot, num, w, h, cam);
         }

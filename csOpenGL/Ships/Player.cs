@@ -17,7 +17,7 @@ namespace LD47.Ships
         private Hotkey space = new Hotkey(false).AddKey(Key.Space);
 
 
-        public Player(Enums.Nation nation) : base(nation, new Vector2(1920/2, 1080/2), 1, 16, 16, 3)
+        public Player(Enums.Nation nation) : base(nation, new Vector2(1920/2, 1080/2), 2, 64, 64, 3)
         {
 
         }
@@ -34,7 +34,7 @@ namespace LD47.Ships
 
         public override void Shoot()
         {
-            Globals.projectiles.Add(new Weapons.Projectile(this, new Vector2(0, -10), position + new Vector2(6, -10), 4, 8, 1));
+            Globals.projectiles.Add(new Weapons.Projectile(this, new Vector2(0, -10), position + new Vector2(w / 2 - 2, -10), 4, 8, 1));
         }
 
         public override void ShootAt(Plane target)
