@@ -20,7 +20,7 @@ namespace LD47.Ships
 
         public override void Draw()
         {
-            sprite.Draw(position.X, position.Y, true, 0, 1, 1, 1, 1);
+            sprite.Draw(position.X, position.Y, true, (float)Math.PI, 1, 1, 1, 1);
         }
 
         public override void Update(double delta)
