@@ -16,7 +16,7 @@ namespace LD47
         private Hotkey up = new Hotkey(true).AddKey(Key.W).AddKey(Key.Up);
         private Hotkey down = new Hotkey(true).AddKey(Key.S).AddKey(Key.Down);
 
-        private Level l = new Level(2);
+        private Level l = new Level(Textures.testLevel);
         public List<DrawnButton> buttons = new List<DrawnButton>();
 
         public Game(Window window)
@@ -27,8 +27,7 @@ namespace LD47
 
         public void OnLoad()
         {
-            buttons.Add(new DrawnButton("test", 0, 0, 200, 100, () => { Window.window.ToggleShader(1); }, 0.5f, 0.5f, 0.5f));
-            buttons.Add(new DrawnButton("test2", 0, 105, 200, 100, () => { Window.window.ToggleShader(2); }, 0.5f, 0.5f, 0.5f));
+
         }
 
         public void Update(double delta)

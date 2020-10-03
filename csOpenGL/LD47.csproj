@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DrawnButton.cs" />
+    <Compile Include="EnemyWave.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Globals.cs" />
