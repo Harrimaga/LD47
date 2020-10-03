@@ -54,14 +54,22 @@ namespace LD47
                     i--;
                 }
             }
-            foreach(Plane p in planes)
+            for (int i = planes.Count - 1; i >= 0; i--)
             {
-                p.Update(Globals.delta);
+                if(planes[i].health <= 0)
+                {
+                    planes.RemoveAt(i);
+                    continue;
+                }
+                planes[i].Update(Globals.delta);
             }
 
-            foreach (Projectile p in projectiles)
+            for(int i = projectiles.Count-1; i >= 0; i--)
             {
-                p.Update(Globals.delta);
+                if(projectiles[i].Update(Globals.delta))
+                {
+                    projectiles.RemoveAt(i);
+                }
             }
         }
 
