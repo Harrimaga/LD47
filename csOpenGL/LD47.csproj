@@ -135,6 +135,7 @@
     <Compile Include="Shaders\BasicPostShader.cs" />
     <Compile Include="Shaders\BlurShader.cs" />
     <Compile Include="Shaders\MainShader.cs" />
+    <Compile Include="Ships\EnemyPlane.cs" />
     <Compile Include="Ships\TestEnemy.cs" />
     <Compile Include="Ships\Plane.cs" />
     <Compile Include="Ships\Player.cs" />

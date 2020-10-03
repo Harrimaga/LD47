@@ -28,6 +28,7 @@ namespace LD47
             this.window = window;
             OnLoad();
             Globals.currentLevel = l;
+            Globals.player = player;
         }
 
         public void OnLoad()
@@ -80,11 +81,11 @@ namespace LD47
         {
             //Do all you draw calls here
 
+            l.draw();
             foreach (Projectile projectile in Globals.projectiles)
             {
                 projectile.Draw();
             }
-            l.draw();
 
             player.Draw();
             foreach (DrawnButton button in buttons)
