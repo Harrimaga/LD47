@@ -9,7 +9,7 @@ using SixLabors.ImageSharp.Processing;
 
 namespace LD47
 {
-    class Textures
+    public class Textures
     {
 
         public static List<Texture> list = new List<Texture>();
@@ -27,7 +27,7 @@ namespace LD47
         }
 
     }
-    class Texture
+    public class Texture
     {
 
         public long Handle;

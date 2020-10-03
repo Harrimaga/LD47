@@ -46,7 +46,7 @@ namespace LD47
         }
     }
 
-    class Sprite
+    public class Sprite
     {
 
         public int w, h, num;
