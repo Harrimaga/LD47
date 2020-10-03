@@ -140,6 +140,7 @@ namespace LD47
 
                     Window.window.DrawText("SCORE: " + Globals.levelScore, 5, 5);
                     Window.window.DrawText("HEALTH: " + Globals.player.health, 5, 55);
+                    Window.window.DrawText("June 12th 1943", 1920 - 320, 1080 - 60);
                     Globals.leaderBoardUI.Draw();
                     break;
                 case Enums.GamesState.MainMenu:
