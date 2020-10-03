@@ -9,10 +9,10 @@ namespace LD47.Ships
 {
     public abstract class Plane
     {
-        protected Enums.Nation nation;
+        public Enums.Nation nation;
         public Vector2 position;
         public int health, tex, w, h;
-        protected AnimatedSprite sprite;
+        public AnimatedSprite sprite;
 
         public Plane(Enums.Nation nation, Vector2 position, int tex, int w, int h, int health = 1)
         {
@@ -32,5 +32,8 @@ namespace LD47.Ships
         public abstract void Draw();
         public abstract void Shoot();
         public abstract void ShootAt(Plane target);
+
+        public abstract void OnDeath();
+
     }
 }

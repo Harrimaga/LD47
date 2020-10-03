@@ -17,15 +17,20 @@ namespace LD47
         public List<EnemyWave> waves;
         public List<Plane> planes;
         public List<Projectile> projectiles;
+        public Hotkey dropBom = new Hotkey(false).AddKey(OpenTK.Input.Key.F);
 
         public Level(int background)
         {
             this.background = Textures.Get(background);
-            waves = new List<EnemyWave>();
             planes = new List<Plane>();
-            waves.Add(new BasicWave<TestEnemy>(120, 120, 5, new OpenTK.Vector2(200, 45)));
             projectiles = new List<Projectile>();
-            //waves.Add(new EnemyWave(12, 2, 2));
+            AddWaves();
+        }
+
+        public virtual void AddWaves()
+        {
+            waves = new List<EnemyWave>();
+            waves.Add(new BasicWave<TestEnemy>(120, 120, 5, new OpenTK.Vector2(200, 45)));
         }
 
         public void addPlane(Plane p)
@@ -40,6 +45,10 @@ namespace LD47
             if (timePassed > background.totH-gameHeight)
             {
                 timePassed = background.totH - gameHeight;
+                if(dropBom.IsDown())
+                {
+                    ResetLevel();
+                }
             }
             if(timePassed < 0)
             {
@@ -58,10 +67,16 @@ namespace LD47
             {
                 if(planes[i].health <= 0)
                 {
+                    planes[i].OnDeath();
                     planes.RemoveAt(i);
                     continue;
                 }
                 planes[i].Update(Globals.delta);
+                if(!Globals.checkCol(planes[i].position.X, planes[i].position.Y, planes[i].w, planes[i].h, 1920/400, 45, 800, gameHeight))
+                {
+                    planes.RemoveAt(i);
+                    continue;
+                }
             }
 
             for(int i = projectiles.Count-1; i >= 0; i--)
@@ -71,6 +86,16 @@ namespace LD47
                     projectiles.RemoveAt(i);
                 }
             }
+        }
+
+        public virtual void ResetLevel()
+        {
+            Globals.difficulty += 0.25;
+            planes = new List<Plane>();
+            projectiles = new List<Projectile>();
+            timePassed = 0;
+            AddWaves();
+
         }
 
         public void draw()
