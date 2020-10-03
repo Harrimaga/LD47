@@ -42,7 +42,7 @@ namespace LD47
             a = 1;
         }
 
-        public DrawnButton(string text, float x, float y, float width, float height, EventAction onClickAction, Texture tex = null, float r = 1, float g = 1, float b = 1)
+        public DrawnButton(string text, float x, float y, float width, float height, EventAction onClickAction, int tex = -1, float r = 1, float g = 1, float b = 1)
         {
             if (height < 25)
             {
@@ -54,13 +54,13 @@ namespace LD47
             Width = width;
             Height = height;
             OnClickAction = onClickAction;
-            if (tex == null)
+            if (tex == -1)
             {
-                Sprite = new Sprite((int)width, (int)height, 0, 0);
+                Sprite = new Sprite((int)width, (int)height, 0, 1);
             }
             else
             {
-                Sprite = new Sprite((int)width, (int)height, 0, 0);
+                Sprite = new Sprite((int)width, (int)height, 0, tex);
             }
             this.r = r;
             this.g = g;
