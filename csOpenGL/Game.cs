@@ -87,6 +87,16 @@ namespace LD47
             l = Globals.currentLevel;
         }
 
+        private void RemoveOverdraw()
+        {
+            Sprite s = new Sprite(1920 / 2 - 400, 1080, 0, 1);
+            s.Draw(0, 0, false, 0, 0, 0, 0, 1);
+            s.Draw(1920/2+400, 0, false, 0, 0, 0, 0, 1);
+            s = new Sprite(800, 45, 0, 1);
+            s.Draw(1920 / 2 - 400, 0, false, 0, 0, 0, 0, 1);
+            s.Draw(1920 / 2 - 400, 1080-45, false, 0, 0, 0, 0, 1);
+        }
+
         public void Draw()
         {
             //Do all you draw calls here
@@ -98,6 +108,9 @@ namespace LD47
             }
 
             player.Draw();
+
+            RemoveOverdraw();
+
             foreach (DrawnButton button in buttons)
             {
                 button.Draw();
