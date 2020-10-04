@@ -23,7 +23,7 @@ namespace LD47
         public Level(int background)
         {
             this.background = Textures.Get(background);
-            clouds = Textures.Get(7);
+            clouds = Textures.Get(Globals.random.Next(0, 3) + 7);
             planes = new List<Plane>();
             projectiles = new List<Projectile>();
             AddWaves();

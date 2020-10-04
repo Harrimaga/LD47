@@ -62,6 +62,7 @@ namespace LD47
 
             // Create leaderBoardUI
             Globals.leaderBoardUI = new LeaderBoardUI(50, 250, Globals.state.Highscores);
+            
             CreateMainMenu();
         }
 
