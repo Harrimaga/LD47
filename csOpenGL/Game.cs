@@ -145,7 +145,13 @@ namespace LD47
                     RemoveOverdraw();
 
                     Window.window.DrawText("SCORE: " + Globals.levelScore, 5, 5, false, Globals.ArcadeFont);
-                    Window.window.DrawText("HEALTH: " + Globals.player.health, 5, 55, false, Globals.ArcadeFont);
+                    Window.window.DrawText("HEALTH: ", 5, 55, false, Globals.ArcadeFont);
+
+                    for(int i = 0; i < Globals.player.health; i++)
+                    {
+                        Sprite s = new Sprite(32, 32, 0, 3);
+                        s.Draw(175 + i*35, 55);
+                    }
 
                     Window.window.DrawText("Last bomb dropped", 1920-550, 10, false, Globals.ArcadeFont);
                     Window.window.DrawText(Globals.lastBombDistance + "km", 1920 - 550, 45, false, Globals.ArcadeFont);
