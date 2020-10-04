@@ -91,15 +91,22 @@ namespace LD47
 
         public void StartLevel<T>(Enums.Nation playernation)
         {
+            if (Globals.state.NationsUnlocked.Contains( playernation ))
+            {
+                player = new Player(playernation);
+                Globals.player = player;
+                Globals.levelScore = 0;
+                Globals.currentLevel = (Level)Activator.CreateInstance(typeof(T), new object[] { });
+                l = Globals.currentLevel;
+                Globals.gamesState = Enums.GamesState.Playing;
+                Globals.difficulty = 1;
+                buttons.Clear();
+            }
+            else
+            {
+                // might need a notification or something?
+            }
             
-            player = new Player(playernation);
-            Globals.player = player;
-            Globals.levelScore = 0;
-            Globals.currentLevel = (Level)Activator.CreateInstance(typeof(T), new object[] { });
-            l = Globals.currentLevel;
-            Globals.gamesState = Enums.GamesState.Playing;
-            Globals.difficulty = 1;
-            buttons.Clear();
         }
 
         public void PlayerDied()
