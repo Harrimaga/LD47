@@ -71,6 +71,8 @@ namespace LD47
                 Globals.lastBombDistance = distance;
                 Globals.lastBombLocation = closestLocation.Item1;
 
+                player.BombsLeft--;
+
                 if(timePassed >= background.totH - gameHeight)
                 {
                     ResetLevel();
