@@ -12,7 +12,34 @@ namespace LD47.Levels
     class LondonToDortmund : Level
     {
 
-        public LondonToDortmund() : base(Textures.MapLondonDortmund)
+        public LondonToDortmund() : 
+            base(
+                Textures.MapLondonDortmund
+                , new Dictionary<string, Vector2>
+                {
+                    { "London", new Vector2(420, 300) },
+                    { "Middelburg", new Vector2(428, 6000-2981) },
+                    { "Vlissingen", new Vector2(473, 6000-3008) },
+                    { "Oostkapelle", new Vector2(342, 6000-3025) },
+                    { "Antwerp", new Vector2(751, 6000-2418) },
+                    { "Breda", new Vector2(316, 6000-2190) },
+                    { "Tilburg", new Vector2(348, 6000-1991) },
+                    { "Den Bosch", new Vector2(197, 6000-1811) },
+                    { "Eindhoven", new Vector2(499, 6000-1714) },
+                    { "Nijmegen", new Vector2(68, 6000-1474) },
+                    { "Venlo", new Vector2(567, 6000-1273) },
+                    { "Krefeld", new Vector2(610, 6000-958) },
+                    { "Dusseldorf", new Vector2(722, 6000-843) },
+                    { "Duisburg", new Vector2(508, 6000-855) },
+                    { "Gelschenkirchen", new Vector2(399, 6000-742) },
+                    { "Wuppertal", new Vector2(683, 6000-538) },
+                    { "Dortmund", new Vector2(434, 6000-544) },
+                    { "Wesel", new Vector2(243, 6000-923) },
+                    { "Bocholt", new Vector2(49, 6000-925) },
+                    { "Dumen", new Vector2(52, 6000-763) }
+                }
+                , 600
+            )
         {
 
         }
