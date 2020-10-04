@@ -109,6 +109,7 @@ namespace LD47
                 Globals.playerName = "AAA";
             }
             Globals.leaderBoardUI.AddToLeaderboard(new Score(Globals.playerName, Globals.levelScore));
+            Globals.state.ScoreAccumulated += Globals.levelScore;
             Globals.levelScore = 0;
             Globals.gamesState = Enums.GamesState.MainMenu;
             CreateMainMenu();
@@ -167,6 +168,7 @@ namespace LD47
                     break;
                 case Enums.GamesState.MainMenu:
                     Window.window.DrawText("NAME: " + Globals.playerName, 5, 5, false, Globals.ArcadeFont);
+                    Window.window.DrawText("Total accumulated score: " + Globals.state.ScoreAccumulated, 5, 1025, false, Globals.ArcadeFont);
                     break;
             }
 
