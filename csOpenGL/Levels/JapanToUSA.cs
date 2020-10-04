@@ -61,11 +61,49 @@ namespace LD47.Levels
                 waves.Add(new AAWave(1655, 1, 0, new Vector2(750, -30), Textures.GERAABoat));
             if (Globals.difficulty >= 1.75)
                 waves.Add(new AAWave(1725, 1, 0, new Vector2(350, -30), Textures.GERAABoat));
-            waves.Add(new AAWave(1600, 1, 0, new Vector2(200, -30), Textures.GERAABoat));
             if (Globals.difficulty >= 2)
                 waves.Add(new AAWave(1795, 1, 0, new Vector2(500, -30), Textures.GERAABoat));
 
+
+            waves.Add(new LineWave<EnemyUSAPlane>(2000, 0, 5, new Vector2(190, -10), new Vector2(100, 0), (int i, double timeAlive, int max) => { return new Vector2(0, 4.5f); }));
+            waves.Add(new AAWave(2200, 1, 0, new Vector2(450, -30), Textures.GERAABoat));
+            waves.Add(new AAWave(2200, 1, 0, new Vector2(75, -30), Textures.GERAABoat));
+            if (Globals.difficulty >= 1.5)
+                waves.Add(new AAWave(2210, 1, 0, new Vector2(550, -30), Textures.GERAABoat));
+            if (Globals.difficulty >= 2)
+                waves.Add(new AAWave(2270, 1, 0, new Vector2(430, -30), Textures.GERAABoat));
+            if (Globals.difficulty >= 3)
+                waves.Add(new AAWave(2290, 1, 0, new Vector2(530, -30), Textures.GERAABoat));
+
+            waves.Add(new AAWave(3200, 1, 0, new Vector2(450, -30), Textures.GERAABoat));
+            waves.Add(new AAWave(3200, 1, 0, new Vector2(75, -30), Textures.GERAABoat));
+            if (Globals.difficulty >= 1.5)
+                waves.Add(new AAWave(3210, 1, 0, new Vector2(550, -30), Textures.GERAABoat));
+            if (Globals.difficulty >= 2)
+                waves.Add(new AAWave(3230, 1, 0, new Vector2(600, -30), Textures.GERAABoat));
+            if (Globals.difficulty >= 3)
+                waves.Add(new AAWave(3235, 1, 0, new Vector2(350, -30), Textures.GERAABoat));
+
+            waves.Add(new BasicWave<EnemyUSAPlane>(4100, 20, 5, new Vector2(0, 200), (int i, double timeAlive, int max) => Circle(i, timeAlive, max, new Vector2(3, -1))));
+            waves.Add(new BasicWave<EnemyUSAPlane>(4300, 20, 5, new Vector2(790, 200), (int i, double timeAlive, int max) => Circle(i, -timeAlive, max, new Vector2(-3, -1))));
+
+            waves.Add(new LineWave<EnemyUSAPlane>(4600, 0, 7, new Vector2(90, -10), new Vector2(100, 0), (int i, double timeAlive, int max) => { return new Vector2(-1, 4f); }));
+            waves.Add(new LineWave<EnemyUSAPlane>(4800, 0, 7, new Vector2(90, -10), new Vector2(100, 0), (int i, double timeAlive, int max) => { return new Vector2(1, 4f); }));
+
+            waves.Add(new AAWave(5000, 1, 0, new Vector2(750, -30), Textures.GERAAGround));
+            waves.Add(new AAWave(5000, 1, 0, new Vector2(35, -30), Textures.GERAAGround));
+            if(Globals.difficulty >= 2)
+            {
+
+                waves.Add(new AAWave(5250, 1, 0, new Vector2(755, -30), Textures.GERAAGround));
+                waves.Add(new AAWave(5250, 1, 0, new Vector2(30, -30), Textures.GERAAGround));
+            }
+            waves.Add(new LineWave<EnemyUSAPlane>(6000, 0, 7, new Vector2(90, -10), new Vector2(100, 0), (int i, double timeAlive, int max) => { return new Vector2(-1, 4f); }));
+            waves.Add(new LineWave<EnemyUSAPlane>(6000, 0, 7, new Vector2(90, -10), new Vector2(100, 0), (int i, double timeAlive, int max) => { return new Vector2(1, 4f); }));
+            waves.Add(new AAWave(6300, 1, 0, new Vector2(700, -30), Textures.GERAABoat));
+            waves.Add(new AAWave(6310, 1, 0, new Vector2(85, -30), Textures.GERAAGround));
         }
+    
 
         private Vector2 Arch(int i, double timeAlive, int max)
         {
@@ -83,9 +121,16 @@ namespace LD47.Levels
 
         private Vector2 ArchDown(int i, double timeAlive, int max, Vector2 baseDirection, double archFactor = 1)
         {
-            baseDirection.X /= (float)(1 + timeAlive * archFactor / 60);
+            baseDirection.X /= (float)(1 + timeAlive * archFactor / 90);
             baseDirection.Normalize();
             return baseDirection * 4;
+        }
+
+        private Vector2 Circle(int i, double timeAlive, int max, Vector2 baseDirection)
+        {
+            float c = (float)Math.Cos(timeAlive / 60);
+            float s = (float)Math.Sin(timeAlive / 60);
+            return new Vector2(baseDirection.X * c + baseDirection.Y * s, baseDirection.X * s + baseDirection.Y * c);
         }
 
     }
