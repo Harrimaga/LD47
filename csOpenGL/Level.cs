@@ -105,10 +105,20 @@ namespace LD47
         public void draw()
         {
             background.AddToList(1920 / 2 - 400, 45, 1, 1, 1, 1, (int)timePassed , background.totW, gameHeight);
-            clouds.AddToList(1920 / 2 - 400, 45, 1, 1, 1, 1, (int)(timePassed * 1.5f), background.totW, gameHeight);
-            foreach(Plane p in planes)
+            foreach (Plane p in planes)
             {
-                p.Draw();
+                if (p is AA)
+                {
+                    p.Draw();
+                }
+            }
+            clouds.AddToList(1920 / 2 - 400, 45, 1, 1, 1, 1, (int)(timePassed * 1.5f), background.totW, gameHeight);
+            foreach (Plane p in planes)
+            {
+                if (!(p is AA))
+                {
+                    p.Draw();
+                }
             }
 
             foreach (Projectile p in projectiles)
