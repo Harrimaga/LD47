@@ -39,7 +39,7 @@ namespace LD47.Ships
         {
             Vector2 tar = (target.position + new Vector2(target.w/2, target.h/2)) - (position + new Vector2(w / 2, h / 2));
             tar.Normalize();
-            Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, tar*12, position + new Vector2(w / 2, h / 2) - new Vector2(3, 3), 6, 12, 15));
+            Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, tar*12, position + new Vector2(w / 2, h / 2) - new Vector2(6, 12), 12, 24, 15));
         }
 
         public override void Update(double delta)
