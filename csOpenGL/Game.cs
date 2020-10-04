@@ -1,4 +1,5 @@
-﻿using LD47.Ships;
+﻿using LD47.Levels;
+using LD47.Ships;
 using LD47.Weapons;
 using OpenTK.Input;
 using Secretary;
@@ -88,13 +89,13 @@ namespace LD47
             }
         }
 
-        public void StartLevel<T>(Enums.Nation playernation, int backgroundImage)
+        public void StartLevel<T>(Enums.Nation playernation)
         {
             
             player = new Player(playernation);
             Globals.player = player;
             Globals.levelScore = 0;
-            Globals.currentLevel = (Level)Activator.CreateInstance(typeof(T), new object[] { backgroundImage });
+            Globals.currentLevel = (Level)Activator.CreateInstance(typeof(T), new object[] { });
             l = Globals.currentLevel;
             Globals.gamesState = Enums.GamesState.Playing;
             buttons.Clear();
@@ -110,7 +111,7 @@ namespace LD47
 
         public void CreateMainMenu()
         {
-            buttons.Add(new DrawnButton("Level 1", 1920 / 2 - 200, 50, 400, 100, () => StartLevel<Level>(Enums.Nation.Brittain, Textures.MapLondonDortmund), 1, 0.05f, 0.05f, 0.05f));
+            buttons.Add(new DrawnButton("Level 1", 1920 / 2 - 200, 50, 400, 100, () => StartLevel<LondonToDortmund>(Enums.Nation.Brittain), 1, 0.05f, 0.05f, 0.05f));
         }
 
         private void RemoveOverdraw()
