@@ -164,7 +164,6 @@ namespace LD47
                 Globals.player.health = 5;
             }
             Globals.player.BombsLeft = 5;
-
         }
 
         public void draw()

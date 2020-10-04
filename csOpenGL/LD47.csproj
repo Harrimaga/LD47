@@ -220,6 +220,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Textures\Explosion.png" />
     <Content Include="Textures\Maps\Clouds1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

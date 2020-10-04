@@ -13,7 +13,7 @@ namespace LD47
     {
 
         public static List<Texture> list = new List<Texture>();
-        public const int test = 0, pixel = 1, testLevel = 2, UKBomber1gun = 3, baseProjectile = 4, GERBomber1gun = 5, MapLondonDortmund = 6, clouds1 = 7, clouds2 = 8, clouds3 = 9, GERAABoat = 10, GERAAGround = 11, RadarBackground = 12, JapanUSAMap = 13;
+        public const int test = 0, pixel = 1, testLevel = 2, UKBomber1gun = 3, baseProjectile = 4, GERBomber1gun = 5, MapLondonDortmund = 6, clouds1 = 7, clouds2 = 8, clouds3 = 9, GERAABoat = 10, GERAAGround = 11, RadarBackground = 12, JapanUSAMap = 13, Explosion = 14;
 
         public static void Load()
         {
@@ -31,6 +31,7 @@ namespace LD47
             list.Add(new Texture("Textures/Ships/Germany/GERAAGround.png", 64, 64, 64, 64));
             list.Add(new Texture("Textures/RadarBackground.png", 82, 82, 82, 82));
             list.Add(new Texture("Textures/Maps/MapJapanUSA.png", 800, 7450, 800, Level.gameHeight));
+            list.Add(new Texture("Textures/Explosion.png", 512, 64, 64, 64));
         }
 
         public static Texture Get(int i)

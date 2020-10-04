@@ -91,24 +91,32 @@ namespace LD47
 
         public void StartLevel<T>(Enums.Nation playernation)
         {
+            if (Globals.state.NationsUnlocked.Contains( playernation ))
+            {
+                player = new Player(playernation);
+                Globals.player = player;
+                Globals.levelScore = 0;
+                Globals.currentLevel = (Level)Activator.CreateInstance(typeof(T), new object[] { });
+                l = Globals.currentLevel;
+                Globals.gamesState = Enums.GamesState.Playing;
+                Globals.difficulty = 1;
+                buttons.Clear();
+            }
+            else
+            {
+                // might need a notification or something?
+            }
             
-            player = new Player(playernation);
-            Globals.player = player;
-            Globals.levelScore = 0;
-            Globals.currentLevel = (Level)Activator.CreateInstance(typeof(T), new object[] { });
-            l = Globals.currentLevel;
-            Globals.gamesState = Enums.GamesState.Playing;
-            Globals.difficulty = 1;
-            buttons.Clear();
         }
 
         public void PlayerDied()
         {
-            if (Globals.playerName == "Type to insert a name")
+            if (Globals.state.Name == "Type to insert a name")
             {
-                Globals.playerName = "AAA";
+                Globals.state.Name = "AAA";
             }
-            Globals.leaderBoardUI.AddToLeaderboard(new Score(Globals.playerName, Globals.levelScore));
+            Globals.leaderBoardUI.AddToLeaderboard(new Score(Globals.state.Name, Globals.levelScore));
+            Globals.state.ScoreAccumulated += Globals.levelScore;
             Globals.levelScore = 0;
             Globals.gamesState = Enums.GamesState.MainMenu;
             CreateMainMenu();
@@ -116,8 +124,24 @@ namespace LD47
 
         public void CreateMainMenu()
         {
-            buttons.Add(new DrawnButton("Level 1", 1920 / 2 - 200, 50, 400, 100, () => StartLevel<LondonToDortmund>(Enums.Nation.Brittain), 1, 0.05f, 0.05f, 0.05f));
-            buttons.Add(new DrawnButton("Level 2", 1920 / 2 - 200, 250, 400, 100, () => StartLevel<JapanToUSA>(Enums.Nation.Japan), 1, 0.05f, 0.05f, 0.05f));
+            buttons.Add(new DrawnButton("Britain", 1920 / 2 - 200, 75, 400, 100, () => StartLevel<LondonToDortmund>(Enums.Nation.Brittain), 1, 0.05f, 0.05f, 0.05f));
+            buttons.Add(new DrawnButton("Japan", 1920 / 2 - 200, 175, 400, 100, () => StartLevel<JapanToUSA>(Enums.Nation.Japan), 1, 0.05f, 0.05f, 0.05f));
+
+            if (!Globals.state.NationsUnlocked.Contains(Enums.Nation.Japan))
+            {
+                buttons.Add(new DrawnButton("Unlock for 50.000 scorepoints", 1920 / 2 + 300, 175, 500, 100, () => UnlockNation(Enums.Nation.Japan, 50000), 1, 0.05f, 0.05f, 0.05f));
+            }
+        }
+
+        private void UnlockNation(Enums.Nation nation, ulong scoreRequired)
+        {
+            if (scoreRequired <= Globals.state.ScoreAccumulated)
+            {
+                Globals.state.ScoreAccumulated -= scoreRequired;
+                Globals.state.NationsUnlocked.Add(nation);
+                buttons.Clear();
+                CreateMainMenu();
+            }
         }
 
         private void RemoveOverdraw()
@@ -166,7 +190,8 @@ namespace LD47
                     Globals.leaderBoardUI.Draw();
                     break;
                 case Enums.GamesState.MainMenu:
-                    Window.window.DrawText("NAME: " + Globals.playerName, 5, 5, false, Globals.ArcadeFont);
+                    Window.window.DrawText("NAME: " + Globals.state.Name, 5, 5, false, Globals.ArcadeFont);
+                    Window.window.DrawText("Total accumulated score: " + Globals.state.ScoreAccumulated, 5, 1025, false, Globals.ArcadeFont);
                     break;
             }
 

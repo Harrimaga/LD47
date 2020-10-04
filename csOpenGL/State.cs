@@ -12,6 +12,7 @@ namespace LD47
         public ulong ScoreAccumulated { get; set; }
         public List<Enums.Nation> NationsUnlocked { get; set; }
         public Score[] Highscores { get; set; }
+        public string Name { get; set; }
 
         // Used when initializing the state
         public State()
@@ -31,6 +32,7 @@ namespace LD47
                 new Score("REY", 8000),
                 new Score("YEE", 5000),
             };
+            Name = "Type to insert a name";
         }
     }
     [Serializable]
