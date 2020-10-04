@@ -51,7 +51,7 @@ namespace LD47.Ships
                         float shotAngle = angle * (i + 1);
                         Vector2 dir = new Vector2((float)Math.Cos(shotAngle), -(float)Math.Sin(shotAngle));
                         dir *= 10;
-                        Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, dir, position + new Vector2(w / 2 - 2, -10), 4, 8, 4));
+                        Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, dir, position + new Vector2(w / 2 - 6, -10), 12, 24, 4));
                     }
                 }
 
@@ -60,7 +60,7 @@ namespace LD47.Ships
                     Vector2 shotPos = new Vector2(w / 2 + 8 - (multishot - 1) * 5, -10);
                     for (int i = 0; i < multishot; i++)
                     {
-                        Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, new Vector2(0, -10), position + shotPos + new Vector2((i - 1) * 10, 0), 4, 8, 4));
+                        Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, new Vector2(0, -10), position + shotPos + new Vector2((i - 1) * 10 - 6, 0), 12, 24, 4));
                     }
                 }
                 
