@@ -34,6 +34,7 @@ namespace LD47
                     SpawnNext();
                     spawned++;
                 }
+                return spawned >= spawnAmount;
             }
             else if(time >= startTime)
             {
@@ -52,9 +53,10 @@ namespace LD47
                     SpawnNext();
                     spawned++;
                     spawnTimer = time - startTime;
+                    return spawned >= spawnAmount;
                 }
             }
-            return spawned >= spawnAmount;
+            return false;
         }
 
         public virtual void SpawnNext()

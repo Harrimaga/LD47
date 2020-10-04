@@ -150,6 +150,7 @@
     <Compile Include="Texture.cs" />
     <Compile Include="Waves\AAWave.cs" />
     <Compile Include="Waves\BasicWave.cs" />
+    <Compile Include="Waves\LineWave.cs" />
     <Compile Include="Weapons\Projectile.cs" />
     <Compile Include="Window.cs" />
   </ItemGroup>
