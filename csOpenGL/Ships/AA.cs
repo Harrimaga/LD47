@@ -55,7 +55,7 @@ namespace LD47.Ships
 
         public override void OnDeath()
         {
-            
+            Globals.levelScore += (ulong)(350 * Globals.difficulty);
         }
     }
 }

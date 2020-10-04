@@ -78,6 +78,23 @@ namespace LD47
                 {
                     ResetLevel();
                 }
+
+                Plane planeToDelete = null;
+                foreach(Plane plane in planes)
+                {
+                    // You are only able to bomb AA
+                    if (plane is AA && Globals.checkCol(player.position.X, player.position.Y, player.w, player.h, plane.position.X, plane.position.Y, plane.w, plane.h))
+                    {
+                        // Trigger death
+                        plane.OnDeath();
+                        planeToDelete = plane;
+                        break;
+                    }
+                }
+                if (planeToDelete != null)
+                {
+                    planes.Remove(planeToDelete);
+                }
                 
             }
 
