@@ -52,6 +52,17 @@ namespace LD47.Ships
         public override void Update(double delta)
         {
             shootTime += delta;
+            foreach(Plane p in Globals.currentLevel.planes)
+            {
+                if(!(p is AA))
+                {
+                    if(Globals.checkCol(position.X, position.Y, w, h, p.position.X, p.position.Y, p.w, p.h))
+                    {
+                        health--;
+                        p.health--;
+                    }
+                }
+            }
             if (left.IsDown())
             {
                 position.X -= (float)(10 * delta);
