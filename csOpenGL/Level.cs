@@ -1,6 +1,7 @@
 ﻿using LD47.Ships;
 using LD47.Waves;
 using LD47.Weapons;
+using OpenTK;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,21 +19,23 @@ namespace LD47
         public List<Plane> planes;
         public List<Projectile> projectiles;
         public Hotkey dropBom = new Hotkey(false).AddKey(OpenTK.Input.Key.F);
+        public Dictionary<string, Vector2> Locations { get; set; }
 
-        public Level(int background)
+        public Level(int background, Dictionary<string, Vector2> locations)
         {
+            Locations       = locations;
             this.background = Textures.Get(background);
-            clouds = Textures.Get(7);
-            planes = new List<Plane>();
-            projectiles = new List<Projectile>();
+            clouds          = Textures.Get(7);
+            planes          = new List<Plane>();
+            projectiles     = new List<Projectile>();
             AddWaves();
         }
 
         public virtual void AddWaves()
         {
             waves = new List<EnemyWave>();
-            waves.Add(new BasicWave<TestEnemy>(120, 120, 5, new OpenTK.Vector2(200, 45)));
-            waves.Add(new AAWave(400, 80, 2 , new OpenTK.Vector2(0,0)));
+            waves.Add(new BasicWave<TestEnemy>(120, 120, 5, new Vector2(200, 45)));
+            waves.Add(new AAWave(400, 80, 2 , new Vector2(0,0)));
         }
 
         public void addPlane(Plane p)
@@ -49,6 +52,13 @@ namespace LD47
                 timePassed = background.totH - gameHeight;
                 if(dropBom.IsDown())
                 {
+                    // Get the distances to each location
+                    var tuples = Locations.Select((location) => Tuple.Create( location.Key, Math.Sqrt(Math.Pow(location.Value.X, 2) + Math.Pow(location.Value.Y, 2))));
+                    // Order the list
+                    tuples.OrderBy((tuple) => tuple.Item2);
+                    // Get the closest
+                    Tuple<string, double> closestLocation = tuples.First();
+
                     ResetLevel();
                 }
             }
