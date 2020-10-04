@@ -1,6 +1,7 @@
 ﻿using LD47.Levels;
 using LD47.Ships;
 using LD47.Weapons;
+using OpenTK;
 using OpenTK.Input;
 using Secretary;
 using System;
@@ -15,11 +16,11 @@ namespace LD47
     {
 
         public Window window;
-        
-        private Level l = new Level(Textures.MapLondonDortmund);
+
+        private Level l;
         public List<DrawnButton> buttons = new List<DrawnButton>();
 
-
+        public Radar radar = new Radar();
         public Player player = new Player(Enums.Nation.Brittain);
 
 
@@ -28,7 +29,6 @@ namespace LD47
         {
             this.window = window;
             OnLoad();
-            Globals.currentLevel = l;
             Globals.player = player;
         }
 
@@ -103,6 +103,10 @@ namespace LD47
 
         public void PlayerDied()
         {
+            if (Globals.playerName == "Type to insert a name")
+            {
+                Globals.playerName = "AAA";
+            }
             Globals.leaderBoardUI.AddToLeaderboard(new Score(Globals.playerName, Globals.levelScore));
             Globals.levelScore = 0;
             Globals.gamesState = Enums.GamesState.MainMenu;
@@ -141,8 +145,20 @@ namespace LD47
                     RemoveOverdraw();
 
                     Window.window.DrawText("SCORE: " + Globals.levelScore, 5, 5, false, Globals.ArcadeFont);
-                    Window.window.DrawText("HEALTH: " + Globals.player.health, 5, 55, false, Globals.ArcadeFont);
-                    Window.window.DrawText("June 12th 1943", 1920 - 400, 1080 - 60, false, Globals.ArcadeFont);
+                    Window.window.DrawText("HEALTH: ", 5, 55, false, Globals.ArcadeFont);
+
+                    for(int i = 0; i < Globals.player.health; i++)
+                    {
+                        Sprite s = new Sprite(32, 32, 0, 3);
+                        s.Draw(175 + i*35, 55);
+                    }
+
+                    Window.window.DrawText("Last bomb dropped", 1920-550, 10, false, Globals.ArcadeFont);
+                    Window.window.DrawText(Globals.lastBombDistance + "km", 1920 - 550, 45, false, Globals.ArcadeFont);
+                    Window.window.DrawText("from " + Globals.lastBombLocation, 1920 - 550, 80, false, Globals.ArcadeFont);
+
+                    Window.window.DrawText(Globals.currentLevel.date, 1920 - 400, 1080 - 60, false, Globals.ArcadeFont);
+                    radar.Draw();
                     Globals.leaderBoardUI.Draw();
                     break;
                 case Enums.GamesState.MainMenu:

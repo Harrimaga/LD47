@@ -19,13 +19,19 @@ namespace LD47
         public List<Plane> planes;
         public List<Projectile> projectiles;
         public Hotkey dropBom = new Hotkey(false).AddKey(OpenTK.Input.Key.F);
+        public string date;
+        public Dictionary<string, Vector2> Locations { get; set; }
+        public double KilometerScale { get; set; }
+        protected double Scale { get => background.totH / KilometerScale ; }
 
-        public Level(int background)
+        public Level(int background, Dictionary<string, Vector2> locations, double kilometerScale)
         {
+            Locations       = locations;
             this.background = Textures.Get(background);
-            clouds = Textures.Get(Globals.random.Next(0, 3) + 7);
-            planes = new List<Plane>();
-            projectiles = new List<Projectile>();
+            clouds          = Textures.Get(7);
+            planes          = new List<Plane>();
+            projectiles     = new List<Projectile>();
+            KilometerScale  = kilometerScale;
             AddWaves();
         }
 
@@ -44,16 +50,41 @@ namespace LD47
         public void Update()
         {
             timePassed += Globals.delta;
+
+            if (dropBom.IsDown())
+            {
+                // Get player location
+                Player player = Globals.player;
+                float playerMapX = player.position.X - 560;
+                float playerMapY = 1080 - player.position.Y - 45;
+
+                // Get the actual Y value against the scrolled sprite
+                float playerRealY = (float)timePassed + playerMapY;
+
+                // Get the distances to each location
+                var tuples = Locations.Select((location) => Tuple.Create(location.Key, Math.Sqrt(Math.Pow(location.Value.X - playerMapX, 2) + Math.Pow(location.Value.Y - playerRealY, 2))));
+                // Order the list
+                tuples = tuples.OrderBy((tuple) => tuple.Item2);
+                // Get the closest
+                Tuple<string, double> closestLocation = tuples.First();
+                double distance = Math.Round(closestLocation.Item2 / Scale, 1);
+                // Write data to Globals
+                Globals.lastBombDistance = distance;
+                Globals.lastBombLocation = closestLocation.Item1;
+
+                if(timePassed >= background.totH - gameHeight)
+                {
+                    ResetLevel();
+                }
+                
+            }
+
             Globals.stoppedScrolling = false;
             // background updating
             if (timePassed > background.totH-gameHeight)
             {
                 Globals.stoppedScrolling = true;
                 timePassed = background.totH - gameHeight;
-                if(dropBom.IsDown())
-                {
-                    ResetLevel();
-                }
             }
             if(timePassed < 0)
             {
@@ -101,7 +132,10 @@ namespace LD47
             projectiles = new List<Projectile>();
             timePassed = 0;
             AddWaves();
-            Globals.player.health = 3;
+            if (Globals.player.health < 5)
+            {
+                Globals.player.health = 5;
+            }
 
         }
 

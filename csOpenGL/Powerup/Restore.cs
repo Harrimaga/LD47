@@ -18,6 +18,10 @@ namespace LD47.Powerup
         {
             // @NOTICE: This means that you could overheal, but I'll allow that for now
             player.health += 1;
+            if (player.health > 10)
+            {
+                player.health = 10;
+            }
         }
     }
 }
