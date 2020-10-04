@@ -7,20 +7,16 @@ using System.Threading.Tasks;
 
 namespace LD47.Powerup
 {
-    public class Restore : Pickupable
+    public class ShotSpeed : Pickupable
     {
-        public Restore(float x, float y, int width, int height, float dx, float dy, Sprite sprite) : base(x, y, width, height, dx, dy, sprite)
+        public ShotSpeed(float x, float y, int width, int height, float dx, float dy, Sprite sprite) : base(x, y, width, height, dx, dy, sprite)
         {
 
         }
 
         protected override void OnCollision(Player player)
         {
-            player.health += 1;
-            if (player.health > 10)
-            {
-                player.health = 10;
-            }
+            player.shootCD *= 0.85;
 
             base.OnCollision(player);
         }

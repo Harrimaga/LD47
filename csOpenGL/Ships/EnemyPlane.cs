@@ -66,6 +66,7 @@ namespace LD47.Ships
         public override void OnDeath()
         {
             Globals.levelScore += (ulong)(100 * Globals.difficulty);
+            Globals.powerupHandler.EnemyDeath(this);
         }
 
     }

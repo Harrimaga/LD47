@@ -17,28 +17,23 @@ namespace LD47.Levels
                 Textures.JapanUSAMap
                 , new Dictionary<string, Vector2>
                 {
-                    { "London", new Vector2(420, 300) },
-                    { "Middelburg", new Vector2(428, 6000-2981) },
-                    { "Vlissingen", new Vector2(473, 6000-3008) },
-                    { "Oostkapelle", new Vector2(342, 6000-3025) },
-                    { "Antwerp", new Vector2(751, 6000-2418) },
-                    { "Breda", new Vector2(316, 6000-2190) },
-                    { "Tilburg", new Vector2(348, 6000-1991) },
-                    { "Den Bosch", new Vector2(197, 6000-1811) },
-                    { "Eindhoven", new Vector2(499, 6000-1714) },
-                    { "Nijmegen", new Vector2(68, 6000-1474) },
-                    { "Venlo", new Vector2(567, 6000-1273) },
-                    { "Krefeld", new Vector2(610, 6000-958) },
-                    { "Dusseldorf", new Vector2(722, 6000-843) },
-                    { "Duisburg", new Vector2(508, 6000-855) },
-                    { "Gelschenkirchen", new Vector2(399, 6000-742) },
-                    { "Wuppertal", new Vector2(683, 6000-538) },
-                    { "Dortmund", new Vector2(434, 6000-544) },
-                    { "Wesel", new Vector2(243, 6000-923) },
-                    { "Bocholt", new Vector2(49, 6000-925) },
-                    { "Dumen", new Vector2(52, 6000-763) }
+                    { "Osaka", new Vector2(495, 7450-7192) },
+                    { "Nagoya", new Vector2(463, 7450-7126) },
+                    { "Tokyo", new Vector2(436, 7450-6989) },
+                    { "Honolulu", new Vector2(575, 7450-4072) },
+                    { "Lahaina", new Vector2(619, 7450-3969) },
+                    { "Hilo", new Vector2(717, 7450-3847) },
+                    { "San Fransisco", new Vector2(306, 7450-2322) },
+                    { "Los Angeles", new Vector2(532, 7450-2125) },
+                    { "San Diego", new Vector2(605, 7450-2067) },
+                    { "Las Vegas", new Vector2(402, 7450-1975) },
+                    { "Dallas", new Vector2(601, 7450-1097) },
+                    { "Houston", new Vector2(767, 7450-1031) },
+                    { "Chicago", new Vector2(54, 7450-661) },
+                    { "Detroit", new Vector2(33, 7450-443) },
+                    { "Philadelphia", new Vector2(203, 7450-47) },
                 }
-                , 600
+                , 11400
             )
         {
             date = "June 12th 1943";
