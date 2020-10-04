@@ -19,7 +19,7 @@ namespace LD47.Powerup
 
         public void EnemyDeath(Plane plane)
         {
-            if (Globals.random.Next(100) < (plane is AA ? 40 : 20))
+            if (Globals.random.NextDouble() * 100 < (plane is AA ? 15 * (2/Globals.difficulty) : 7.5 * (2 / Globals.difficulty)))
             {
                 int p = Globals.random.Next(powerupsAvailable);
 
