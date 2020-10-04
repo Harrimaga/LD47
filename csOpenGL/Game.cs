@@ -125,7 +125,23 @@ namespace LD47
         public void CreateMainMenu()
         {
             buttons.Add(new DrawnButton("Britain", 1920 / 2 - 200, 75, 400, 100, () => StartLevel<LondonToDortmund>(Enums.Nation.Brittain), 1, 0.05f, 0.05f, 0.05f));
-            buttons.Add(new DrawnButton("Japan", 1920 / 2 - 200, 150, 400, 100, () => StartLevel<JapanToUSA>(Enums.Nation.Japan), 1, 0.05f, 0.05f, 0.05f));
+            buttons.Add(new DrawnButton("Japan", 1920 / 2 - 200, 175, 400, 100, () => StartLevel<JapanToUSA>(Enums.Nation.Japan), 1, 0.05f, 0.05f, 0.05f));
+
+            if (!Globals.state.NationsUnlocked.Contains(Enums.Nation.Japan))
+            {
+                buttons.Add(new DrawnButton("Unlock for 50.000 scorepoints", 1920 / 2 + 300, 175, 500, 100, () => UnlockNation(Enums.Nation.Japan, 50000), 1, 0.05f, 0.05f, 0.05f));
+            }
+        }
+
+        private void UnlockNation(Enums.Nation nation, ulong scoreRequired)
+        {
+            if (scoreRequired <= Globals.state.ScoreAccumulated)
+            {
+                Globals.state.ScoreAccumulated -= scoreRequired;
+                Globals.state.NationsUnlocked.Add(nation);
+                buttons.Clear();
+                CreateMainMenu();
+            }
         }
 
         private void RemoveOverdraw()
