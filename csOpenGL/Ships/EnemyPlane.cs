@@ -55,7 +55,7 @@ namespace LD47.Ships
 
         public override void ShootAt(Plane target)
         {
-            Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, new Vector2(projectileSpeed*(float)Math.Sin(rotation), -projectileSpeed * (float)Math.Cos(rotation)), position + new Vector2(w / 2, h / 2) - new Vector2(3, 3), 6, 6, 1));
+            Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, new Vector2(projectileSpeed*(float)Math.Sin(rotation), -projectileSpeed * (float)Math.Cos(rotation)), position + new Vector2(w / 2, h / 2) - new Vector2(3, 3), 6, 6, 4));
         }
 
         public override void AIMovement()
