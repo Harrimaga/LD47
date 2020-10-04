@@ -81,6 +81,9 @@ namespace LD47
 
                     l.Update();
                     break;
+                case Enums.GamesState.MainMenu:
+                    Hotkey.Type();
+                    break;
             }
         }
 
@@ -135,10 +138,13 @@ namespace LD47
 
                     RemoveOverdraw();
 
-                    Window.window.DrawText("SCORE: " + Globals.levelScore, 5, 5);
-                    Window.window.DrawText("HEALTH: " + Globals.player.health, 5, 55);
-                    Window.window.DrawText("June 12th 1943", 1920 - 320, 1080 - 60);
+                    Window.window.DrawText("SCORE: " + Globals.levelScore, 5, 5, false, Globals.ArcadeFont);
+                    Window.window.DrawText("HEALTH: " + Globals.player.health, 5, 55, false, Globals.ArcadeFont);
+                    Window.window.DrawText("June 12th 1943", 1920 - 400, 1080 - 60, false, Globals.ArcadeFont);
                     Globals.leaderBoardUI.Draw();
+                    break;
+                case Enums.GamesState.MainMenu:
+                    Window.window.DrawText("NAME: " + Globals.playerName, 5, 5, false, Globals.ArcadeFont);
                     break;
             }
 
