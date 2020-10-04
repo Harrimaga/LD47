@@ -52,7 +52,7 @@ namespace LD47
                 { "Dumen", new Vector2(52, 6000-763) }
             };
 
-            l = new Level(Textures.MapLondonDortmund, dictionary);
+            l = new Level(Textures.MapLondonDortmund, dictionary, 600);
             Globals.currentLevel = l;
             Globals.player = player;
         }
@@ -141,7 +141,7 @@ namespace LD47
                 { "Wesel", new Vector2(243, 6000-923) },
                 { "Bocholt", new Vector2(49, 6000-925) },
                 { "Dumen", new Vector2(52, 6000-763) }
-            }
+            }, 600
         });
             l = Globals.currentLevel;
             Globals.gamesState = Enums.GamesState.Playing;

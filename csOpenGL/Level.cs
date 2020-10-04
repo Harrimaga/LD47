@@ -20,14 +20,17 @@ namespace LD47
         public List<Projectile> projectiles;
         public Hotkey dropBom = new Hotkey(false).AddKey(OpenTK.Input.Key.F);
         public Dictionary<string, Vector2> Locations { get; set; }
+        public double KilometerScale { get; set; }
+        protected double Scale { get => background.totH / KilometerScale ; }
 
-        public Level(int background, Dictionary<string, Vector2> locations)
+        public Level(int background, Dictionary<string, Vector2> locations, double kilometerScale)
         {
             Locations       = locations;
             this.background = Textures.Get(background);
             clouds          = Textures.Get(7);
             planes          = new List<Plane>();
             projectiles     = new List<Projectile>();
+            KilometerScale  = kilometerScale;
             AddWaves();
         }
 
@@ -63,7 +66,8 @@ namespace LD47
                 tuples = tuples.OrderBy((tuple) => tuple.Item2);
                 // Get the closest
                 Tuple<string, double> closestLocation = tuples.First();
-                Console.WriteLine("closest? " + closestLocation.Item1 + " at " + closestLocation.Item2 + "px");
+                double distance = Math.Round(closestLocation.Item2 / Scale, 1);
+                Console.WriteLine("closest: " + closestLocation.Item1 + " at " + distance + "km");
 
                 if(timePassed >= background.totH - gameHeight)
                 {
