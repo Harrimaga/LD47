@@ -143,6 +143,7 @@
     <Compile Include="Shaders\MainShader.cs" />
     <Compile Include="Ships\AA.cs" />
     <Compile Include="Ships\EnemyPlane.cs" />
+    <Compile Include="Ships\EnemyUSAPlane.cs" />
     <Compile Include="Ships\TestEnemy.cs" />
     <Compile Include="Ships\Plane.cs" />
     <Compile Include="Ships\Player.cs" />
