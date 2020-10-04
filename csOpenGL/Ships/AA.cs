@@ -12,7 +12,7 @@ namespace LD47.Ships
     {
         public float ShotInterval { get; set; }
         private float ShotDelta { get; set; }
-        public AA(Enums.Nation nation, Vector2 position, int tex, int w, int h, int health = 1, float shotInterval = 25f) : base(nation, position, tex, w, h, health)
+        public AA(Enums.Nation nation, Vector2 position, int tex, int w, int h, int health = 1, float shotInterval = 25f) : base(nation, position, tex, w, h, health, null, 0)
         {
             ShotDelta = 0;
             ShotInterval = shotInterval;

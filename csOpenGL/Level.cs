@@ -1,6 +1,7 @@
 ﻿using LD47.Ships;
 using LD47.Waves;
 using LD47.Weapons;
+using OpenTK;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,8 +32,8 @@ namespace LD47
         public virtual void AddWaves()
         {
             waves = new List<EnemyWave>();
-            waves.Add(new BasicWave<TestEnemy>(120, 120, 5, new OpenTK.Vector2(200, 45)));
-            waves.Add(new AAWave(400, 80, 2 , new OpenTK.Vector2(0,0)));
+            waves.Add(new BasicWave<TestEnemy>(120, 25, 5, new Vector2(200, 45), (int i, double timeAlive) => { Vector2 v = (new Vector2(2 - i, 4));v.Normalize(); return (3 * v); }));
+            waves.Add(new AAWave(400, 80, 2 , new Vector2(0,0)));
         }
 
         public void addPlane(Plane p)

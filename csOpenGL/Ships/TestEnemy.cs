@@ -10,14 +10,9 @@ namespace LD47.Ships
     class TestEnemy : EnemyPlane
     {
 
-        public TestEnemy(Vector2 position) : base(Enums.Nation.Germany, position, 5, 25, 25, 120)
+        public TestEnemy(Vector2 position, Movement movement, int spawnNumber) : base(Enums.Nation.Germany, position, 5, 25, 25, 120, movement, spawnNumber)
         {
             projectileSpeed = 20;
-        }
-
-        public override void AIMovement()
-        {
-            position.Y += (float)Globals.delta;
         }
 
         public override void Shoot()
