@@ -53,6 +53,10 @@ namespace LD47
 
         public static void Type()
         {
+            if (Globals.playerName == "Type to insert a name" && now.IsAnyKeyDown)
+            {
+                Globals.playerName = "";
+            }
             if (now.IsKeyDown(Key.BackSpace) && !prev.IsKeyDown(Key.BackSpace))
             {
                 Globals.playerName = Globals.playerName.Length > 0 ? Globals.playerName.Substring(0, Globals.playerName.Length - 1) : Globals.playerName;

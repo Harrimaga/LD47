@@ -103,6 +103,10 @@ namespace LD47
 
         public void PlayerDied()
         {
+            if (Globals.playerName == "Type to insert a name")
+            {
+                Globals.playerName = "AAA";
+            }
             Globals.leaderBoardUI.AddToLeaderboard(new Score(Globals.playerName, Globals.levelScore));
             Globals.levelScore = 0;
             Globals.gamesState = Enums.GamesState.MainMenu;
