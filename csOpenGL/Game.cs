@@ -183,6 +183,26 @@ namespace LD47
                     }
 
                     Window.window.DrawText("BOMBS: " + Globals.player.BombsLeft, 5, 105, false, Globals.ArcadeFont);
+                    Window.window.DrawText("WASD/Arrows to move", 1920 - 550, 160, false, Globals.ArcadeFont);
+                    Window.window.DrawText("SPACE to shoot", 1920 - 550, 200, false, Globals.ArcadeFont);
+                    Window.window.DrawText("F to drop a bomb", 1920 - 550, 240, false, Globals.ArcadeFont);
+                    Window.window.DrawText("Drop bombs to: ", 1920 - 550, 280, false, Globals.ArcadeFont);
+                    Window.window.DrawText("- Destroy boats", 1980 - 550, 320, false, Globals.ArcadeFont);
+                    Window.window.DrawText("- Destroy turrets", 1980 - 550, 360, false, Globals.ArcadeFont);
+                    Window.window.DrawText("- Finish level", 1980 - 550, 400, false, Globals.ArcadeFont);
+
+                    Window.window.DrawText("Additional Health", 1980 - 550, 480, false, Globals.ArcadeFont);
+                    Window.window.DrawText("Multishot", 1980 - 550, 520, false, Globals.ArcadeFont);
+                    Window.window.DrawText("Attack speed", 1980 - 550, 560, false, Globals.ArcadeFont);
+
+                    AnimatedSprite sp = new AnimatedSprite(32, 32, 18, 10);
+                    sp.Draw(1920 - 550, 480);
+
+                    sp = new AnimatedSprite(32, 32, 16, 10);
+                    sp.Draw(1920 - 550, 520);
+
+                    sp = new AnimatedSprite(32, 32, 17, 10);
+                    sp.Draw(1920 - 550, 560);
 
                     Window.window.DrawText("Last bomb dropped", 1920-550, 10, false, Globals.ArcadeFont);
                     Window.window.DrawText(Globals.lastBombDistance + "km", 1920 - 550, 45, false, Globals.ArcadeFont);
@@ -192,6 +212,7 @@ namespace LD47
                     radar.Draw();
                     break;
                 case Enums.GamesState.MainMenu:
+                    Window.window.DrawTextCentered("Select a Nation:", 1920 / 2, 5, false, Globals.ArcadeFont);
                     Window.window.DrawText("NAME: " + Globals.state.Name, 5, 5, false, Globals.ArcadeFont);
                     Window.window.DrawText("Total accumulated score: " + Globals.state.ScoreAccumulated, 5, 1025, false, Globals.ArcadeFont);
                     break;
