@@ -25,10 +25,11 @@ namespace LD47
         public static int Width, Height;
         public static QFont buttonFont = new QFont("Fonts/arial.ttf", 16, new QuickFont.Configuration.QFontBuilderConfiguration(true));
         public static QFont ArcadeFont = new QFont("Fonts/ARCADE_I.TTF", 22, new QuickFont.Configuration.QFontBuilderConfiguration(true));
-        public static double delta, difficulty = 1;
+        public static double delta, difficulty = 0.5;
         public static Level currentLevel;
         public static Player player;
         public static Enums.GamesState gamesState = Enums.GamesState.MainMenu;
+        public static bool stoppedScrolling = false;
 
         public static List<Projectile> projectiles;
 

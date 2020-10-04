@@ -15,12 +15,15 @@ namespace LD47.Ships
         public AA(Enums.Nation nation, Vector2 position, int tex, int w, int h, int health = 1, float shotInterval = 65f) : base(nation, position, tex, w, h, health, null, 0, 0)
         {
             ShotDelta = 0;
-            ShotInterval = shotInterval;
+            ShotInterval = shotInterval / (float)((Globals.difficulty - 1) / 6 + 1);
         }
 
         public override void AIMovement()
         {
-            position.Y += (float) Globals.delta;
+            if (!Globals.stoppedScrolling)
+            {
+                position.Y += (float)Globals.delta;
+            }
         }
 
         public override void Draw()

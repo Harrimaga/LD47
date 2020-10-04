@@ -19,6 +19,7 @@ namespace LD47
         public List<Plane> planes;
         public List<Projectile> projectiles;
         public Hotkey dropBom = new Hotkey(false).AddKey(OpenTK.Input.Key.F);
+        public string date;
         public Dictionary<string, Vector2> Locations { get; set; }
         public double KilometerScale { get; set; }
         protected double Scale { get => background.totH / KilometerScale ; }
@@ -80,9 +81,11 @@ namespace LD47
                 
             }
 
+            Globals.stoppedScrolling = false;
             // background updating
             if (timePassed > background.totH-gameHeight)
             {
+                Globals.stoppedScrolling = true;
                 timePassed = background.totH - gameHeight;
             }
             if(timePassed < 0)
@@ -125,13 +128,18 @@ namespace LD47
 
         public virtual void ResetLevel()
         {
+            Globals.levelScore += (ulong)(1000 * Globals.difficulty);
             Globals.difficulty += 0.25;
             planes = new List<Plane>();
             projectiles = new List<Projectile>();
             timePassed = 0;
             AddWaves();
-            Globals.player.health = 3;
+            if (Globals.player.health < 5)
+            {
+                Globals.player.health = 5;
+            }
             Globals.player.BombsLeft = 5;
+
         }
 
         public void draw()

@@ -16,7 +16,7 @@ namespace LD47.Ships
 
         public EnemyPlane(Enums.Nation nation, Vector2 position, int tex, int w, int h, double attackInterval, Movement movement, int spawnNumber, int maxPlanes, int health = 1) : base(nation, position + new Vector2(1920 / 2 - 400, 45), tex, w, h, health)
         {
-            this.attackInterval = attackInterval / Globals.difficulty;
+            this.attackInterval = attackInterval / ((Globals.difficulty + 1)/4 + 1);
             attackTimer = 0;
             this.movement = movement;
             this.spawnNumber = spawnNumber;
