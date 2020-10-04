@@ -28,23 +28,33 @@ namespace LD47
             if(spawning)
             {
                 spawnTimer += Globals.delta;
-                if(spawnTimer >= interval)
+                while(spawnTimer >= interval)
                 {
                     spawnTimer -= interval;
                     SpawnNext();
                     spawned++;
-                    return spawned >= spawnAmount;
                 }
             }
             else if(time >= startTime)
             {
-                spawning = true;
-                SpawnNext();
-                spawned++;
-                spawnTimer = time - startTime;
-                return spawned >= spawnAmount;
+                if(interval == 0)
+                {
+                    for(int i = 0; i < spawnAmount; i++)
+                    {
+                        SpawnNext();
+                        spawned++;
+                    }
+                    return true;
+                }
+                else
+                {
+                    spawning = true;
+                    SpawnNext();
+                    spawned++;
+                    spawnTimer = time - startTime;
+                }
             }
-            return false;
+            return spawned >= spawnAmount;
         }
 
         public virtual void SpawnNext()

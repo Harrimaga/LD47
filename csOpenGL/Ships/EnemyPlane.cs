@@ -6,14 +6,20 @@ namespace LD47.Ships
     public abstract class EnemyPlane : Plane
     {
 
-        public double attackInterval, attackTimer;
+        public delegate Vector2 Movement(int spawnNumber, double timePassed);
+
+        public double attackInterval, attackTimer, timeAlive;
         public float rotation = 0, projectileSpeed;
         public bool rotates = true;
+        public Movement movement;
+        public int spawnNumber;
 
-        public EnemyPlane(Enums.Nation nation, Vector2 position, int tex, int w, int h, double attackInterval, int health = 1) : base(nation, position + new Vector2(1920 / 2 - 400, 45), tex, w, h, health)
+        public EnemyPlane(Enums.Nation nation, Vector2 position, int tex, int w, int h, double attackInterval, Movement movement, int spawnNumber, int health = 1) : base(nation, position + new Vector2(1920 / 2 - 400, 45), tex, w, h, health)
         {
             this.attackInterval = attackInterval / Globals.difficulty;
             attackTimer = 0;
+            this.movement = movement;
+            this.spawnNumber = spawnNumber;
         }
 
         public override void Draw()
@@ -25,6 +31,7 @@ namespace LD47.Ships
         {
             attackTimer += delta;
             Vector2 prev = position;
+            timeAlive += delta;
             AIMovement();
             if (rotates)
             {
@@ -48,6 +55,11 @@ namespace LD47.Ships
         public override void ShootAt(Plane target)
         {
             Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, new Vector2(projectileSpeed*(float)Math.Sin(rotation), -projectileSpeed * (float)Math.Cos(rotation)), position + new Vector2(w / 2, h / 2) - new Vector2(3, 3), 6, 6, 1));
+        }
+
+        public override void AIMovement()
+        {
+            position += movement(spawnNumber, timeAlive);
         }
 
         public override void OnDeath()
