@@ -93,6 +93,7 @@ namespace LD47
         {
             if (Globals.state.NationsUnlocked.Contains( playernation ))
             {
+                window.CursorVisible = false;
                 player = new Player(playernation);
                 Globals.player = player;
                 Globals.levelScore = 0;
@@ -124,6 +125,7 @@ namespace LD47
 
         public void CreateMainMenu()
         {
+            window.CursorVisible = true;
             buttons.Add(new DrawnButton("Britain", 1920 / 2 - 200, 75, 400, 100, () => StartLevel<LondonToDortmund>(Enums.Nation.Brittain), 1, 0.05f, 0.05f, 0.05f));
             buttons.Add(new DrawnButton("Japan", 1920 / 2 - 200, 175, 400, 100, () => StartLevel<JapanToUSA>(Enums.Nation.Japan), 1, 0.05f, 0.05f, 0.05f));
 
