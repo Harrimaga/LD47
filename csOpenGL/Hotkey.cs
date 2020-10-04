@@ -53,15 +53,15 @@ namespace LD47
 
         public static void Type()
         {
-            if (Globals.playerName == "Type to insert a name" && now.IsAnyKeyDown)
+            if (Globals.state.Name == "Type to insert a name" && now.IsAnyKeyDown)
             {
-                Globals.playerName = "";
+                Globals.state.Name = "";
             }
             if (now.IsKeyDown(Key.BackSpace) && !prev.IsKeyDown(Key.BackSpace))
             {
-                Globals.playerName = Globals.playerName.Length > 0 ? Globals.playerName.Substring(0, Globals.playerName.Length - 1) : Globals.playerName;
+                Globals.state.Name = Globals.state.Name.Length > 0 ? Globals.state.Name.Substring(0, Globals.state.Name.Length - 1) : Globals.state.Name;
             }
-            if (Globals.playerName.Length < 3)
+            if (Globals.state.Name.Length < 3)
             {
                     for (int i = (int)Key.A; i <= (int)Key.Z; i++)
                     {
@@ -72,7 +72,7 @@ namespace LD47
                             {
                                 offset = -32;
                             }
-                            Globals.playerName += (char)(i + 14 + offset);
+                            Globals.state.Name += (char)(i + 14 + offset);
                         }
                     }
                 
@@ -80,14 +80,14 @@ namespace LD47
                 {
                     if (now.IsKeyDown((Key)i) && !prev.IsKeyDown((Key)i))
                     {
-                        Globals.playerName += i - 109;
+                        Globals.state.Name += i - 109;
                     }
                 }
                 for (int i = (int)Key.Keypad0; i <= (int)Key.Keypad9; i++)
                 {
                     if (now.IsKeyDown((Key)i) && !prev.IsKeyDown((Key)i))
                     {
-                        Globals.playerName += i - 67;
+                        Globals.state.Name += i - 67;
                     }
                 }
             }
