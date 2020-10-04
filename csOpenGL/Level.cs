@@ -46,21 +46,36 @@ namespace LD47
         public void Update()
         {
             timePassed += Globals.delta;
+
+            if (dropBom.IsDown())
+            {
+                // Get player location
+                Player player = Globals.player;
+                float playerMapX = player.position.X - 560;
+                float playerMapY = 1080 - player.position.Y - 45;
+
+                // Get the actual Y value against the scrolled sprite
+                float playerRealY = (float)timePassed + playerMapY;
+
+                // Get the distances to each location
+                var tuples = Locations.Select((location) => Tuple.Create(location.Key, Math.Sqrt(Math.Pow(location.Value.X - playerMapX, 2) + Math.Pow(location.Value.Y - playerRealY, 2))));
+                // Order the list
+                tuples = tuples.OrderBy((tuple) => tuple.Item2);
+                // Get the closest
+                Tuple<string, double> closestLocation = tuples.First();
+                Console.WriteLine("closest? " + closestLocation.Item1 + " at " + closestLocation.Item2 + "px");
+
+                if(timePassed >= background.totH - gameHeight)
+                {
+                    ResetLevel();
+                }
+                
+            }
+
             // background updating
             if (timePassed > background.totH-gameHeight)
             {
                 timePassed = background.totH - gameHeight;
-                if(dropBom.IsDown())
-                {
-                    // Get the distances to each location
-                    var tuples = Locations.Select((location) => Tuple.Create( location.Key, Math.Sqrt(Math.Pow(location.Value.X, 2) + Math.Pow(location.Value.Y, 2))));
-                    // Order the list
-                    tuples.OrderBy((tuple) => tuple.Item2);
-                    // Get the closest
-                    Tuple<string, double> closestLocation = tuples.First();
-
-                    ResetLevel();
-                }
             }
             if(timePassed < 0)
             {
