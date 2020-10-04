@@ -154,6 +154,8 @@ namespace LD47
                         s.Draw(175 + i*35, 55);
                     }
 
+                    Window.window.DrawText("BOMBS: " + Globals.player.BombsLeft, 5, 105, false, Globals.ArcadeFont);
+
                     Window.window.DrawText("Last bomb dropped", 1920-550, 10, false, Globals.ArcadeFont);
                     Window.window.DrawText(Globals.lastBombDistance + "km", 1920 - 550, 45, false, Globals.ArcadeFont);
                     Window.window.DrawText("from " + Globals.lastBombLocation, 1920 - 550, 80, false, Globals.ArcadeFont);

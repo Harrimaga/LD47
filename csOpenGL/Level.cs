@@ -51,7 +51,7 @@ namespace LD47
         {
             timePassed += Globals.delta;
 
-            if (dropBom.IsDown())
+            if (dropBom.IsDown() && ( Globals.player.BombsLeft > 0 || timePassed >= background.totH - gameHeight)) // Matthijs: I'm being nice and won't allow the player to be softlocked
             {
                 // Get player location
                 Player player = Globals.player;
@@ -71,6 +71,8 @@ namespace LD47
                 // Write data to Globals
                 Globals.lastBombDistance = distance;
                 Globals.lastBombLocation = closestLocation.Item1;
+
+                player.BombsLeft--;
 
                 if(timePassed >= background.totH - gameHeight)
                 {
@@ -136,6 +138,7 @@ namespace LD47
             {
                 Globals.player.health = 5;
             }
+            Globals.player.BombsLeft = 5;
 
         }
 
