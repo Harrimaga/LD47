@@ -189,13 +189,13 @@ namespace LD47
 
                     Window.window.DrawText(Globals.currentLevel.date, 1920 - (Globals.currentLevel is JapanToUSA ? 450 : 400), 1080 - 60, false, Globals.ArcadeFont);
                     radar.Draw();
-                    Globals.leaderBoardUI.Draw();
                     break;
                 case Enums.GamesState.MainMenu:
                     Window.window.DrawText("NAME: " + Globals.state.Name, 5, 5, false, Globals.ArcadeFont);
                     Window.window.DrawText("Total accumulated score: " + Globals.state.ScoreAccumulated, 5, 1025, false, Globals.ArcadeFont);
                     break;
             }
+            Globals.leaderBoardUI.Draw();
 
             foreach (DrawnButton button in buttons)
             {
