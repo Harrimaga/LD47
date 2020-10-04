@@ -12,7 +12,7 @@ namespace LD47.Ships
 
         public TestEnemy(Vector2 position, Movement movement, int spawnNumber, int maxPlanes) : base(Enums.Nation.Germany, position, 5, 25, 25, 120, movement, spawnNumber, maxPlanes)
         {
-            projectileSpeed = 20;
+            projectileSpeed = 12;
         }
 
         public override void Shoot()

@@ -98,6 +98,7 @@ namespace LD47
             Globals.currentLevel = (Level)Activator.CreateInstance(typeof(T), new object[] { });
             l = Globals.currentLevel;
             Globals.gamesState = Enums.GamesState.Playing;
+            Globals.difficulty = 0.5;
             buttons.Clear();
         }
 
