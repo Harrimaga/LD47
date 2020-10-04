@@ -19,7 +19,7 @@ namespace LD47
         private Level l = new Level(Textures.MapLondonDortmund);
         public List<DrawnButton> buttons = new List<DrawnButton>();
 
-
+        public Radar radar = new Radar();
         public Player player = new Player(Enums.Nation.Brittain);
 
 
@@ -143,6 +143,7 @@ namespace LD47
                     Window.window.DrawText("SCORE: " + Globals.levelScore, 5, 5, false, Globals.ArcadeFont);
                     Window.window.DrawText("HEALTH: " + Globals.player.health, 5, 55, false, Globals.ArcadeFont);
                     Window.window.DrawText("June 12th 1943", 1920 - 400, 1080 - 60, false, Globals.ArcadeFont);
+                    radar.Draw();
                     Globals.leaderBoardUI.Draw();
                     break;
                 case Enums.GamesState.MainMenu:
