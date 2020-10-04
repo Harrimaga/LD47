@@ -67,7 +67,9 @@ namespace LD47
                 // Get the closest
                 Tuple<string, double> closestLocation = tuples.First();
                 double distance = Math.Round(closestLocation.Item2 / Scale, 1);
-                Console.WriteLine("closest: " + closestLocation.Item1 + " at " + distance + "km");
+                // Write data to Globals
+                Globals.lastBombDistance = distance;
+                Globals.lastBombLocation = closestLocation.Item1;
 
                 if(timePassed >= background.totH - gameHeight)
                 {

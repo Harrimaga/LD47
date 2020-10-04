@@ -37,7 +37,7 @@ namespace LD47
                 { "Antwerp", new Vector2(751, 6000-2418) },
                 { "Breda", new Vector2(316, 6000-2190) },
                 { "Tilburg", new Vector2(348, 6000-1991) },
-                { "'s-Hertogenbosch", new Vector2(197, 6000-1811) },
+                { "Den Bosch", new Vector2(197, 6000-1811) },
                 { "Eindhoven", new Vector2(499, 6000-1714) },
                 { "Nijmegen", new Vector2(68, 6000-1474) },
                 { "Venlo", new Vector2(567, 6000-1273) },
@@ -121,14 +121,14 @@ namespace LD47
             Globals.levelScore = 0;
             Globals.currentLevel = (Level)Activator.CreateInstance(typeof(T), new object[] { backgroundImage, new Dictionary<string, Vector2>
             {
-                { "London", new Vector2(420, 300) },
+                { "London", new Vector2(420, 6000-5700) },
                 { "Middelburg", new Vector2(428, 6000-2981) },
                 { "Vlissingen", new Vector2(473, 6000-3008) },
                 { "Oostkapelle", new Vector2(342, 6000-3025) },
                 { "Antwerp", new Vector2(751, 6000-2418) },
                 { "Breda", new Vector2(316, 6000-2190) },
                 { "Tilburg", new Vector2(348, 6000-1991) },
-                { "'s-Hertogenbosch", new Vector2(197, 6000-1811) },
+                { "Den Bosch", new Vector2(197, 6000-1811) },
                 { "Eindhoven", new Vector2(499, 6000-1714) },
                 { "Nijmegen", new Vector2(68, 6000-1474) },
                 { "Venlo", new Vector2(567, 6000-1273) },
@@ -189,6 +189,11 @@ namespace LD47
 
                     Window.window.DrawText("SCORE: " + Globals.levelScore, 5, 5, false, Globals.ArcadeFont);
                     Window.window.DrawText("HEALTH: " + Globals.player.health, 5, 55, false, Globals.ArcadeFont);
+
+                    Window.window.DrawText("Last bomb dropped", 1920-550, 10, false, Globals.ArcadeFont);
+                    Window.window.DrawText(Globals.lastBombDistance + "km", 1920 - 550, 45, false, Globals.ArcadeFont);
+                    Window.window.DrawText("from " + Globals.lastBombLocation, 1920 - 550, 80, false, Globals.ArcadeFont);
+
                     Window.window.DrawText("June 12th 1943", 1920 - 400, 1080 - 60, false, Globals.ArcadeFont);
                     Globals.leaderBoardUI.Draw();
                     break;
