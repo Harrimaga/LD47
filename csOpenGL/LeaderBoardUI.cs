@@ -41,8 +41,8 @@ namespace LD47
 
             foreach(Score score in Scores)
             {
-                Window.window.DrawText(score.Name, currentX, currentY, false, Globals.buttonFont);
-                Window.window.DrawText(score.Points.ToString(), currentX + 50, currentY, false, Globals.buttonFont);
+                Window.window.DrawText(score.Name, currentX, currentY, false, Globals.ArcadeFont);
+                Window.window.DrawText(score.Points.ToString(), currentX + 100, currentY, false, Globals.ArcadeFont);
                 currentY += 50;
             }
             
