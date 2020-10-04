@@ -116,8 +116,8 @@ namespace LD47
 
         public void CreateMainMenu()
         {
-            buttons.Add(new DrawnButton("Level 1", 1920 / 2 - 200, 50, 400, 100, () => StartLevel<LondonToDortmund>(Enums.Nation.Brittain), 1, 0.05f, 0.05f, 0.05f));
-            buttons.Add(new DrawnButton("Level 2", 1920 / 2 - 200, 250, 400, 100, () => StartLevel<JapanToUSA>(Enums.Nation.Japan), 1, 0.05f, 0.05f, 0.05f));
+            buttons.Add(new DrawnButton("Britain", 1920 / 2 - 200, 50, 400, 100, () => StartLevel<LondonToDortmund>(Enums.Nation.Brittain), 1, 0.05f, 0.05f, 0.05f));
+            buttons.Add(new DrawnButton("Japan", 1920 / 2 - 200, 250, 400, 100, () => StartLevel<JapanToUSA>(Enums.Nation.Japan), 1, 0.05f, 0.05f, 0.05f));
         }
 
         private void RemoveOverdraw()
