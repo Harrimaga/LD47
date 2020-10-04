@@ -157,7 +157,7 @@ namespace LD47
                     Window.window.DrawText(Globals.lastBombDistance + "km", 1920 - 550, 45, false, Globals.ArcadeFont);
                     Window.window.DrawText("from " + Globals.lastBombLocation, 1920 - 550, 80, false, Globals.ArcadeFont);
 
-                    Window.window.DrawText("June 12th 1943", 1920 - 400, 1080 - 60, false, Globals.ArcadeFont);
+                    Window.window.DrawText(Globals.currentLevel.date, 1920 - 400, 1080 - 60, false, Globals.ArcadeFont);
                     radar.Draw();
                     Globals.leaderBoardUI.Draw();
                     break;

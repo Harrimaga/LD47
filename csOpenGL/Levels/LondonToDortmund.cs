@@ -41,7 +41,7 @@ namespace LD47.Levels
                 , 600
             )
         {
-
+            date = "June 12th 1943";
         }
 
         public override void AddWaves()

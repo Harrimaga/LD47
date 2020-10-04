@@ -19,6 +19,7 @@ namespace LD47
         public List<Plane> planes;
         public List<Projectile> projectiles;
         public Hotkey dropBom = new Hotkey(false).AddKey(OpenTK.Input.Key.F);
+        public string date;
         public Dictionary<string, Vector2> Locations { get; set; }
         public double KilometerScale { get; set; }
         protected double Scale { get => background.totH / KilometerScale ; }
