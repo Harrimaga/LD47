@@ -35,8 +35,8 @@ namespace LD47.Powerup
 
         public void Update()
         {
-            X = (float)Globals.delta * Dx;
-            Y = (float)Globals.delta * Dy;
+            X += (float)Globals.delta * Dx;
+            Y += (float)Globals.delta * Dy;
 
             Player player = Globals.player;
 
@@ -46,6 +46,9 @@ namespace LD47.Powerup
             }
         }
 
-        protected abstract void OnCollision(Player player);
+        protected virtual void OnCollision(Player player) 
+        {
+            Globals.currentLevel.powerups.Remove(this);
+        }
     }
 }

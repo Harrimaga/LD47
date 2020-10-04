@@ -1,4 +1,5 @@
-﻿using LD47.Ships;
+﻿using LD47.Powerup;
+using LD47.Ships;
 using LD47.Waves;
 using LD47.Weapons;
 using OpenTK;
@@ -18,6 +19,7 @@ namespace LD47
         public List<EnemyWave> waves;
         public List<Plane> planes;
         public List<Projectile> projectiles;
+        public List<Pickupable> powerups;
         public Hotkey dropBom = new Hotkey(false).AddKey(OpenTK.Input.Key.F);
         public string date;
         public Dictionary<string, Vector2> Locations { get; set; }
@@ -31,6 +33,7 @@ namespace LD47
             clouds          = Textures.Get(7);
             planes          = new List<Plane>();
             projectiles     = new List<Projectile>();
+            powerups        = new List<Pickupable>();
             KilometerScale  = kilometerScale;
             AddWaves();
         }
@@ -115,6 +118,11 @@ namespace LD47
                 }
             }
 
+            for (int i = powerups.Count - 1; i >= 0; i--)
+            {
+                powerups[i].Update();
+            }
+
             for(int i = projectiles.Count-1; i >= 0; i--)
             {
                 if(projectiles[i].Update(Globals.delta))
@@ -157,6 +165,11 @@ namespace LD47
                 {
                     p.Draw();
                 }
+            }
+
+            foreach (Pickupable pickupable in powerups)
+            {
+                pickupable.Draw();
             }
 
             foreach (Projectile p in projectiles)

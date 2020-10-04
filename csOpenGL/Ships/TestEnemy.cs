@@ -19,7 +19,5 @@ namespace LD47.Ships
         {
             
         }
-
-
     }
 }

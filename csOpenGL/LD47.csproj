@@ -131,8 +131,11 @@
     <Compile Include="Level.cs" />
     <Compile Include="LeaderBoardUI.cs" />
     <Compile Include="Levels\LondonToDortmund.cs" />
+    <Compile Include="Powerup\Multishot.cs" />
     <Compile Include="Powerup\Pickupable.cs" />
+    <Compile Include="Powerup\PowerupHandler.cs" />
     <Compile Include="Powerup\Restore.cs" />
+    <Compile Include="Powerup\ShotSpeed.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Radar.cs" />
