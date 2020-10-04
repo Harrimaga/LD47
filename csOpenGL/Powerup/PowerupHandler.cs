@@ -26,16 +26,16 @@ namespace LD47.Powerup
                 switch (p)
                 {
                     case 0:
-                        Globals.currentLevel.powerups.Add(new Restore(plane.position.X, plane.position.Y, 50, 50, 0, 1, new Sprite(50, 50, 0, 1)));
+                        Globals.currentLevel.powerups.Add(new Restore(plane.position.X, plane.position.Y, 32, 32, 0, 1, new AnimatedSprite(32, 32, 18, 10)));
                         break;
                     case 1:
-                        Globals.currentLevel.powerups.Add(new ShotSpeed(plane.position.X, plane.position.Y, 20, 20, 0, 1, new Sprite(20, 20, 0, 1)));
+                        Globals.currentLevel.powerups.Add(new ShotSpeed(plane.position.X, plane.position.Y, 32, 32, 0, 1, new AnimatedSprite(32, 32, 17, 10)));
                         break;
                     case 2:
-                        Globals.currentLevel.powerups.Add(new Multishot(plane.position.X, plane.position.Y, 10, 10, 0, 1, new Sprite(10, 10, 0, 1)));
+                        Globals.currentLevel.powerups.Add(new Multishot(plane.position.X, plane.position.Y, 32, 32, 0, 1, new AnimatedSprite(32, 32, 16, 10)));
                         break;
                     default:
-                        Globals.currentLevel.powerups.Add(new Restore(plane.position.X, plane.position.Y, 5, 5, 0, 1, new Sprite(5, 5, 0, 1)));
+                        Globals.currentLevel.powerups.Add(new Restore(plane.position.X, plane.position.Y, 32, 32, 0, 1, new AnimatedSprite(32, 32, 18, 10)));
                         break;
                 }
             }

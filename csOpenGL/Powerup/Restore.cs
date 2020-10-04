@@ -9,7 +9,7 @@ namespace LD47.Powerup
 {
     public class Restore : Pickupable
     {
-        public Restore(float x, float y, int width, int height, float dx, float dy, Sprite sprite) : base(x, y, width, height, dx, dy, sprite)
+        public Restore(float x, float y, int width, int height, float dx, float dy, AnimatedSprite sprite) : base(x, y, width, height, dx, dy, sprite)
         {
 
         }

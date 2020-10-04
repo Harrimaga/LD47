@@ -9,7 +9,7 @@ namespace LD47.Powerup
 {
     public class Multishot : Pickupable
     {
-        public Multishot(float x, float y, int width, int height, float dx, float dy, Sprite sprite) : base(x, y, width, height, dx, dy, sprite)
+        public Multishot(float x, float y, int width, int height, float dx, float dy, AnimatedSprite sprite) : base(x, y, width, height, dx, dy, sprite)
         {
 
         }

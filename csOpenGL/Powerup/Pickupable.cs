@@ -15,9 +15,9 @@ namespace LD47.Powerup
         public int Height { get; set; }
         public float Dx { get; set; }
         public float Dy { get; set; }
-        public Sprite Sprite { get; set; }
+        public AnimatedSprite Sprite { get; set; }
 
-        protected Pickupable(float x, float y, int width, int height, float dx, float dy, Sprite sprite)
+        protected Pickupable(float x, float y, int width, int height, float dx, float dy, AnimatedSprite sprite)
         {
             X = x;
             Y = y;
