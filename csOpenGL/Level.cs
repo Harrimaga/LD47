@@ -32,7 +32,7 @@ namespace LD47
         public virtual void AddWaves()
         {
             waves = new List<EnemyWave>();
-            waves.Add(new BasicWave<TestEnemy>(120, 25, 5, new Vector2(200, 45), (int i, double timeAlive) => { Vector2 v = (new Vector2(2 - i, 4));v.Normalize(); return (3 * v); }));
+            waves.Add(new BasicWave<TestEnemy>(120, 25, 5, new Vector2(200, 45), (int i, double timeAlive, int max) => { Vector2 v = (new Vector2(max/2 - i, max));v.Normalize(); return (3 * v); }));
             waves.Add(new AAWave(400, 80, 2 , new Vector2(0,0)));
         }
 
@@ -105,10 +105,20 @@ namespace LD47
         public void draw()
         {
             background.AddToList(1920 / 2 - 400, 45, 1, 1, 1, 1, (int)timePassed , background.totW, gameHeight);
-            clouds.AddToList(1920 / 2 - 400, 45, 1, 1, 1, 1, (int)(timePassed * 1.5f), background.totW, gameHeight);
-            foreach(Plane p in planes)
+            foreach (Plane p in planes)
             {
-                p.Draw();
+                if (p is AA)
+                {
+                    p.Draw();
+                }
+            }
+            clouds.AddToList(1920 / 2 - 400, 45, 1, 1, 1, 1, (int)(timePassed * 1.5f), background.totW, gameHeight);
+            foreach (Plane p in planes)
+            {
+                if (!(p is AA))
+                {
+                    p.Draw();
+                }
             }
 
             foreach (Projectile p in projectiles)
