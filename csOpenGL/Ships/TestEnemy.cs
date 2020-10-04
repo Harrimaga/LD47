@@ -12,7 +12,7 @@ namespace LD47.Ships
 
         public TestEnemy(Vector2 position) : base(Enums.Nation.Germany, position, 5, 25, 25, 120)
         {
-
+            projectileSpeed = 20;
         }
 
         public override void AIMovement()

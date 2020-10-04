@@ -74,7 +74,7 @@ namespace LD47
                     continue;
                 }
                 planes[i].Update(Globals.delta);
-                if(!Globals.checkCol(planes[i].position.X, planes[i].position.Y, planes[i].w, planes[i].h, 1920/400, 45, 800, gameHeight))
+                if(!Globals.checkCol(planes[i].position.X, planes[i].position.Y, planes[i].w, planes[i].h, 1920/2 - 400, 45, 800, gameHeight))
                 {
                     planes.RemoveAt(i);
                     continue;
