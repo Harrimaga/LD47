@@ -79,6 +79,7 @@ namespace LD47
                     ResetLevel();
                 }
 
+                Plane planeToDelete = null;
                 foreach(Plane plane in planes)
                 {
                     // You are only able to bomb AA
@@ -86,8 +87,13 @@ namespace LD47
                     {
                         // Trigger death
                         plane.OnDeath();
-                        planes.Remove(plane);
+                        planeToDelete = plane;
+                        break;
                     }
+                }
+                if (planeToDelete != null)
+                {
+                    planes.Remove(planeToDelete);
                 }
                 
             }
