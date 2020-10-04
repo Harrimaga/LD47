@@ -31,7 +31,7 @@ namespace LD47.Levels
             waves.Add(new AAWave(673, 1, 0, new Vector2(700, -30), Textures.GERAABoat));
             waves.Add(new LineWave<TestEnemy>(1200, 15, 6, new Vector2(50, -10), new Vector2(135, 0), (int i, double timeAlive, int max) => { return new Vector2(1, 3); }));
             waves.Add(new LineWave<TestEnemy>(1230, 15, 6, new Vector2(750, -10), new Vector2(-135, 0), (int i, double timeAlive, int max) => { return new Vector2(-1, 3); }));
-            waves.Add(new AAWave(1900, 1, 0, new Vector2(550, -30), Textures.GERAABoat));
+            waves.Add(new AAWave(1900, 1, 0, new Vector2(550, -30), Textures.GERAAGround));
         }
 
         private Vector2 Arch(int i, double timeAlive, int max)
