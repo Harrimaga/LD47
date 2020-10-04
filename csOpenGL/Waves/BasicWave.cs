@@ -23,7 +23,7 @@ namespace LD47.Waves
 
         public override void SpawnNext()
         {
-            Globals.currentLevel.addPlane((Plane)Activator.CreateInstance(typeof(T), new object[] { spawnPosition, movement, spawned }));
+            Globals.currentLevel.addPlane((Plane)Activator.CreateInstance(typeof(T), new object[] { spawnPosition, movement, spawned, spawnAmount }));
         }
 
     }

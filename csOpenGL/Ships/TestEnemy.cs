@@ -10,7 +10,7 @@ namespace LD47.Ships
     class TestEnemy : EnemyPlane
     {
 
-        public TestEnemy(Vector2 position, Movement movement, int spawnNumber) : base(Enums.Nation.Germany, position, 5, 25, 25, 120, movement, spawnNumber)
+        public TestEnemy(Vector2 position, Movement movement, int spawnNumber, int maxPlanes) : base(Enums.Nation.Germany, position, 5, 25, 25, 120, movement, spawnNumber, maxPlanes)
         {
             projectileSpeed = 20;
         }

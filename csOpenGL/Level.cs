@@ -32,7 +32,7 @@ namespace LD47
         public virtual void AddWaves()
         {
             waves = new List<EnemyWave>();
-            waves.Add(new BasicWave<TestEnemy>(120, 25, 5, new Vector2(200, 45), (int i, double timeAlive) => { Vector2 v = (new Vector2(2 - i, 4));v.Normalize(); return (3 * v); }));
+            waves.Add(new BasicWave<TestEnemy>(120, 25, 5, new Vector2(200, 45), (int i, double timeAlive, int max) => { Vector2 v = (new Vector2(max/2 - i, max));v.Normalize(); return (3 * v); }));
             waves.Add(new AAWave(400, 80, 2 , new Vector2(0,0)));
         }
 
