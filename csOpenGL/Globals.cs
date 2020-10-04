@@ -18,7 +18,7 @@ namespace LD47
         public static State state;
         public static Logger Logger = new Logger("data/log.txt");
         public static LeaderBoardUI leaderBoardUI;
-        public static string playerName = "Type to insert a name";
+        //public static string playerName = "Type to insert a name";
         public static string lastBombLocation;
         public static double lastBombDistance;
         public static Random random = new Random();

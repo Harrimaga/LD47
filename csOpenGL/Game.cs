@@ -111,11 +111,11 @@ namespace LD47
 
         public void PlayerDied()
         {
-            if (Globals.playerName == "Type to insert a name")
+            if (Globals.state.Name == "Type to insert a name")
             {
-                Globals.playerName = "AAA";
+                Globals.state.Name = "AAA";
             }
-            Globals.leaderBoardUI.AddToLeaderboard(new Score(Globals.playerName, Globals.levelScore));
+            Globals.leaderBoardUI.AddToLeaderboard(new Score(Globals.state.Name, Globals.levelScore));
             Globals.state.ScoreAccumulated += Globals.levelScore;
             Globals.levelScore = 0;
             Globals.gamesState = Enums.GamesState.MainMenu;
@@ -190,7 +190,7 @@ namespace LD47
                     Globals.leaderBoardUI.Draw();
                     break;
                 case Enums.GamesState.MainMenu:
-                    Window.window.DrawText("NAME: " + Globals.playerName, 5, 5, false, Globals.ArcadeFont);
+                    Window.window.DrawText("NAME: " + Globals.state.Name, 5, 5, false, Globals.ArcadeFont);
                     Window.window.DrawText("Total accumulated score: " + Globals.state.ScoreAccumulated, 5, 1025, false, Globals.ArcadeFont);
                     break;
             }
