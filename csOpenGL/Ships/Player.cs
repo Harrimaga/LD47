@@ -15,6 +15,7 @@ namespace LD47.Ships
         private Hotkey up = new Hotkey(true).AddKey(Key.W).AddKey(Key.Up);
         private Hotkey down = new Hotkey(true).AddKey(Key.S).AddKey(Key.Down);
         private Hotkey space = new Hotkey(true).AddKey(Key.Space);
+        public int BombsLeft { get; set; }
 
         private double shootCD = 20;
         private double shootTime = 20;
@@ -22,7 +23,7 @@ namespace LD47.Ships
 
         public Player(Enums.Nation nation) : base(nation, new Vector2(1920/2, 1080/2), 3, 64, 64, 5)
         {
-
+            BombsLeft = 5;
         }
 
         public override void AIMovement()
