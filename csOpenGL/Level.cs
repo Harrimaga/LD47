@@ -31,7 +31,7 @@ namespace LD47
         {
             Locations       = locations;
             this.background = Textures.Get(background);
-            clouds          = Textures.Get(7);
+            clouds          = Textures.Get(Globals.random.Next(7, 10));
             planes          = new List<Plane>();
             projectiles     = new List<Projectile>();
             powerups        = new List<Pickupable>();
@@ -165,6 +165,7 @@ namespace LD47
         {
             Globals.levelScore += (ulong)(1000 * Globals.difficulty);
             Globals.difficulty += 0.25;
+            clouds = Textures.Get(Globals.random.Next(7, 10));
             planes = new List<Plane>();
             projectiles = new List<Projectile>();
             timePassed = 0;
