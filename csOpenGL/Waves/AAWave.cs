@@ -19,7 +19,7 @@ namespace LD47.Waves
 
         public override void SpawnNext()
         {
-            Globals.currentLevel.addPlane(new AA(Enums.Nation.Germany, spawnPosition, 0, 32, 32));
+            Globals.currentLevel.addPlane(new AA(Enums.Nation.Germany, spawnPosition, 10, 32, 32));
         }
     }
 }
