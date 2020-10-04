@@ -20,7 +20,7 @@ namespace LD47
         private Level l;
         public List<DrawnButton> buttons = new List<DrawnButton>();
 
-
+        public Radar radar = new Radar();
         public Player player = new Player(Enums.Nation.Brittain);
 
 
@@ -148,6 +148,7 @@ namespace LD47
                     Window.window.DrawText("from " + Globals.lastBombLocation, 1920 - 550, 80, false, Globals.ArcadeFont);
 
                     Window.window.DrawText("June 12th 1943", 1920 - 400, 1080 - 60, false, Globals.ArcadeFont);
+                    radar.Draw();
                     Globals.leaderBoardUI.Draw();
                     break;
                 case Enums.GamesState.MainMenu:
