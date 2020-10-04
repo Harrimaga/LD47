@@ -15,9 +15,11 @@ namespace LD47.Ships
         private Hotkey up = new Hotkey(true).AddKey(Key.W).AddKey(Key.Up);
         private Hotkey down = new Hotkey(true).AddKey(Key.S).AddKey(Key.Down);
         private Hotkey space = new Hotkey(true).AddKey(Key.Space);
+        private Hotkey e = new Hotkey(false).AddKey(Key.E);
         public int BombsLeft { get; set; }
 
-        private double shootCD = 20;
+        public double shootCD = 20;
+        public int multishot = 1;
         private double shootTime = 20;
 
 
@@ -40,7 +42,29 @@ namespace LD47.Ships
         {
             if (shootTime > shootCD)
             {
-                Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, new Vector2(0, -10), position + new Vector2(w / 2 - 2, -10), 4, 8, 4));
+                if (multishot > 3)
+                {
+                    float angle = (float)Math.PI / (multishot + 1);
+
+                    for (int i = 0; i < multishot; i++)
+                    {
+                        float shotAngle = angle * (i + 1);
+                        Vector2 dir = new Vector2((float)Math.Cos(shotAngle), -(float)Math.Sin(shotAngle));
+                        dir *= 10;
+                        Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, dir, position + new Vector2(w / 2 - 2, -10), 4, 8, 4));
+                    }
+                }
+
+                else
+                {
+                    Vector2 shotPos = new Vector2(w / 2 + 8 - (multishot - 1) * 5, -10);
+                    for (int i = 0; i < multishot; i++)
+                    {
+                        Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, new Vector2(0, -10), position + shotPos + new Vector2((i - 1) * 10, 0), 4, 8, 4));
+                    }
+                }
+                
+
                 shootTime = 0;
             }
         }
@@ -101,6 +125,7 @@ namespace LD47.Ships
             }
 
             if (space.IsDown()) Shoot();
+            //if (e.IsDown()) multishot++;
         }
 
         public override void OnDeath()

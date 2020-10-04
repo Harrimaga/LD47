@@ -1,4 +1,5 @@
-﻿using LD47.Ships;
+﻿using LD47.Powerup;
+using LD47.Ships;
 using LD47.Weapons;
 using OpenTK.Graphics.OpenGL;
 using QuickFont;
@@ -21,7 +22,7 @@ namespace LD47
         public static string lastBombLocation;
         public static double lastBombDistance;
         public static Random random = new Random();
-
+        public static PowerupHandler powerupHandler = new PowerupHandler();
         public static int Width, Height;
         public static QFont buttonFont = new QFont("Fonts/arial.ttf", 16, new QuickFont.Configuration.QFontBuilderConfiguration(true));
         public static QFont ArcadeFont = new QFont("Fonts/ARCADE_I.TTF", 22, new QuickFont.Configuration.QFontBuilderConfiguration(true));
