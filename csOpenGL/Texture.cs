@@ -13,7 +13,7 @@ namespace LD47
     {
 
         public static List<Texture> list = new List<Texture>();
-        public const int test = 0, pixel = 1, testLevel = 2, UKBomber1gun = 3, baseProjectile = 4, GERBomber1gun = 5, MapLondonDortmund = 6, clouds = 7;
+        public const int test = 0, pixel = 1, testLevel = 2, UKBomber1gun = 3, baseProjectile = 4, GERBomber1gun = 5, MapLondonDortmund = 6, clouds1 = 7, clouds2 = 8, clouds3 = 9, GERAABoat = 10, GERAAGround = 11;
 
         public static void Load()
         {
@@ -21,10 +21,14 @@ namespace LD47
             list.Add(new Texture("Textures/Pixel.png", 1, 1, 1, 1));
             list.Add(new Texture("Textures/TestBackground.png", 800, 3600, 800, Level.gameHeight));
             list.Add(new Texture("Textures/Ships/Uk/UKBomber1gun.png", 128, 64, 64, 64));
-            list.Add(new Texture("Textures/Projectiles/Projectile1.png", 8, 16, 8, 16));
+            list.Add(new Texture("Textures/Projectiles/Projectile1.png", 4, 14, 4, 14));
             list.Add(new Texture("Textures/Ships/Germany/GERBomber1gun.png", 128, 64, 64, 64));
             list.Add(new Texture("Textures/Maps/MapLondonDortmund.png", 800, 6000, 800, Level.gameHeight));
             list.Add(new Texture("Textures/Maps/Clouds1.png", 800, 12000, 800, Level.gameHeight));
+            list.Add(new Texture("Textures/Maps/Clouds2.png", 800, 12000, 800, Level.gameHeight));
+            list.Add(new Texture("Textures/Maps/Clouds3.png", 800, 12000, 800, Level.gameHeight));
+            list.Add(new Texture("Textures/Ships/Germany/GERAABoat.png", 128, 128, 64, 128));
+            list.Add(new Texture("Textures/Ships/Germany/GERAAGround.png", 64, 64, 64, 64));
         }
 
         public static Texture Get(int i)

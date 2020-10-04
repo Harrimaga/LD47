@@ -130,6 +130,7 @@
     <Compile Include="Hotkey.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="LeaderBoardUI.cs" />
+    <Compile Include="Levels\LondonToDortmund.cs" />
     <Compile Include="Powerup\Pickupable.cs" />
     <Compile Include="Powerup\Restore.cs" />
     <Compile Include="Program.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Texture.cs" />
     <Compile Include="Waves\AAWave.cs" />
     <Compile Include="Waves\BasicWave.cs" />
+    <Compile Include="Waves\LineWave.cs" />
     <Compile Include="Weapons\Projectile.cs" />
     <Compile Include="Window.cs" />
   </ItemGroup>
@@ -215,6 +217,15 @@
     <Content Include="Textures\Maps\Clouds1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Textures\Maps\Clouds2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Maps\Clouds3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Maps\MapJapanUSA.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Textures\Maps\MapLondonDortmund.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -222,6 +233,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Textures\Projectiles\Projectile1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Ships\Germany\GERAABoat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Ships\Germany\GERAAGround.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Textures\Ships\Germany\GERBomber1gun.png">

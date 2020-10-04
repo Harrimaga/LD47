@@ -14,12 +14,14 @@ namespace LD47.Weapons
         private Vector2 speed;
         private Vector2 position;
         private Sprite sprite;
+        private float rotation;
 
         public Projectile(Plane origin, Vector2 speed, Vector2 position, int w, int h, int tex)
         {
             this.origin = origin;
             this.speed = speed;
             this.position = position;
+            rotation = (float)Math.Atan2(speed.X, -speed.Y);
             sprite = new Sprite(w, h, 0, tex);
         }
 
@@ -55,7 +57,7 @@ namespace LD47.Weapons
 
         public void Draw()
         {
-            sprite.Draw(position.X, position.Y);
+            sprite.Draw(position.X, position.Y, true, rotation);
         }
     }
 }
