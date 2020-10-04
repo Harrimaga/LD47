@@ -27,6 +27,7 @@ namespace LD47
         public static Level currentLevel;
         public static Player player;
         public static Enums.GamesState gamesState = Enums.GamesState.MainMenu;
+        public static bool stoppedScrolling = false;
 
         public static List<Projectile> projectiles;
 

@@ -44,9 +44,11 @@ namespace LD47
         public void Update()
         {
             timePassed += Globals.delta;
+            Globals.stoppedScrolling = false;
             // background updating
             if (timePassed > background.totH-gameHeight)
             {
+                Globals.stoppedScrolling = true;
                 timePassed = background.totH - gameHeight;
                 if(dropBom.IsDown())
                 {
@@ -93,6 +95,7 @@ namespace LD47
 
         public virtual void ResetLevel()
         {
+            Globals.levelScore += (ulong)(1000 * Globals.difficulty);
             Globals.difficulty += 0.25;
             planes = new List<Plane>();
             projectiles = new List<Projectile>();
@@ -112,8 +115,8 @@ namespace LD47
                     p.Draw();
                 }
             }
-            clouds.AddToList(1920 / 2 - 400, 45, 0, 0, 0, 0.2f, (int)(timePassed * 1.5f) + 50, background.totW, gameHeight);
-            clouds.AddToList(1920 / 2 - 400, 45, 1, 1, 1, 1, (int)(timePassed * 1.5f), background.totW, gameHeight);
+            //clouds.AddToList(1920 / 2 - 400, 45, 0, 0, 0, 0.2f, (int)(timePassed * 1.5f) + 50, background.totW, gameHeight);
+            //clouds.AddToList(1920 / 2 - 400, 45, 1, 1, 1, 1, (int)(timePassed * 1.5f), background.totW, gameHeight);
             foreach (Plane p in planes)
             {
                 if (!(p is AA))
