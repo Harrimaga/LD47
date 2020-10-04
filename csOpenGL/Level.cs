@@ -20,6 +20,7 @@ namespace LD47
         public List<Plane> planes;
         public List<Projectile> projectiles;
         public List<Pickupable> powerups;
+        public List<Explosion> explosions;
         public Hotkey dropBom = new Hotkey(false).AddKey(OpenTK.Input.Key.F);
         public string date;
         public Dictionary<string, Vector2> Locations { get; set; }
@@ -34,6 +35,7 @@ namespace LD47
             planes          = new List<Plane>();
             projectiles     = new List<Projectile>();
             powerups        = new List<Pickupable>();
+            explosions      = new List<Explosion>();
             KilometerScale  = kilometerScale;
             AddWaves();
         }
@@ -58,6 +60,9 @@ namespace LD47
             {
                 // Get player location
                 Player player = Globals.player;
+
+                Globals.currentLevel.explosions.Add(new Explosion(player.w, player.h, player.position));
+
                 float playerMapX = player.position.X - 560;
                 float playerMapY = 1080 - player.position.Y - 45;
 
@@ -149,6 +154,11 @@ namespace LD47
                     projectiles.RemoveAt(i);
                 }
             }
+
+            for (int i = explosions.Count - 1; i >= 0; i--)
+            {
+                explosions[i].Update();
+            }
         }
 
         public virtual void ResetLevel()
@@ -194,6 +204,11 @@ namespace LD47
             foreach (Projectile p in projectiles)
             {
                 p.Draw();
+            }
+
+            foreach (Explosion explosion in explosions)
+            {
+                explosion.Draw();
             }
         }
 
