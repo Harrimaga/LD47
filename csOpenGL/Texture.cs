@@ -21,7 +21,7 @@ namespace LD47
             list.Add(new Texture("Textures/Pixel.png", 1, 1, 1, 1));
             list.Add(new Texture("Textures/TestBackground.png", 800, 3600, 800, Level.gameHeight));
             list.Add(new Texture("Textures/Ships/Uk/UKBomber1gun.png", 128, 64, 64, 64));
-            list.Add(new Texture("Textures/Projectiles/Projectile1.png", 8, 16, 8, 16));
+            list.Add(new Texture("Textures/Projectiles/Projectile1.png", 4, 14, 4, 14));
             list.Add(new Texture("Textures/Ships/Germany/GERBomber1gun.png", 128, 64, 64, 64));
             list.Add(new Texture("Textures/Maps/MapLondonDortmund.png", 800, 6000, 800, Level.gameHeight));
             list.Add(new Texture("Textures/Maps/Clouds1.png", 800, 12000, 800, Level.gameHeight));
