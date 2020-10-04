@@ -173,6 +173,7 @@ namespace LD47
                     RemoveOverdraw();
 
                     Window.window.DrawText("SCORE: " + Globals.levelScore, 5, 5, false, Globals.ArcadeFont);
+                    Window.window.DrawText("Difficulty: " + Globals.difficulty, 1920 - 400, 1080 - 120, false, Globals.ArcadeFont);
                     Window.window.DrawText("HEALTH: ", 5, 55, false, Globals.ArcadeFont);
 
                     for(int i = 0; i < Globals.player.health; i++)
