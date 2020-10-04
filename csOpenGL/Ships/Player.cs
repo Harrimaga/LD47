@@ -16,8 +16,11 @@ namespace LD47.Ships
         private Hotkey down = new Hotkey(true).AddKey(Key.S).AddKey(Key.Down);
         private Hotkey space = new Hotkey(true).AddKey(Key.Space);
 
+        private double shootCD = 20;
+        private double shootTime = 20;
 
-        public Player(Enums.Nation nation) : base(nation, new Vector2(1920/2, 1080/2), 3, 64, 64, 3)
+
+        public Player(Enums.Nation nation) : base(nation, new Vector2(1920/2, 1080/2), 3, 64, 64, 5)
         {
 
         }
@@ -34,7 +37,11 @@ namespace LD47.Ships
 
         public override void Shoot()
         {
-            Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, new Vector2(0, -10), position + new Vector2(w / 2 - 2, -10), 4, 8, 4));
+            if (shootTime > shootCD)
+            {
+                Globals.currentLevel.projectiles.Add(new Weapons.Projectile(this, new Vector2(0, -10), position + new Vector2(w / 2 - 2, -10), 4, 8, 4));
+                shootTime = 0;
+            }
         }
 
         public override void ShootAt(Plane target)
@@ -44,6 +51,7 @@ namespace LD47.Ships
 
         public override void Update(double delta)
         {
+            shootTime += delta;
             if (left.IsDown())
             {
                 position.X -= (float)(10 * delta);

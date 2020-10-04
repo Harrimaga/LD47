@@ -129,7 +129,10 @@ namespace LD47
             projectiles = new List<Projectile>();
             timePassed = 0;
             AddWaves();
-            Globals.player.health = 3;
+            if (Globals.player.health < 5)
+            {
+                Globals.player.health = 5;
+            }
 
         }
 
